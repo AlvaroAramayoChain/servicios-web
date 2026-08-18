@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
+
+<title>Cotizador de sitios web y sistemas | Alvaro Aramayo Chain</title>
+<meta name="description" content="Armá tu presupuesto en línea: elegí una base, sumá los módulos que necesites y enviame el detalle por WhatsApp.">
+<link rel="canonical" href="https://alvaroaramayochain.github.io/servicios-web/cotizador/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Alvaro Aramayo Chain — Desarrollo web">
+<meta property="og:title" content="Armá tu presupuesto">
+<meta property="og:description" content="Elegí una base, sumá módulos y llevate el total por WhatsApp.">
+<meta property="og:url" content="https://alvaroaramayochain.github.io/servicios-web/cotizador/">
+<meta property="og:image" content="https://alvaroaramayochain.github.io/servicios-web/assets/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Armá tu presupuesto">
+<meta name="twitter:description" content="Elegí una base, sumá módulos y llevate el total por WhatsApp.">
+<meta name="twitter:image" content="https://alvaroaramayochain.github.io/servicios-web/assets/og-cover.jpg">
+
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+<link rel="preload" href="../assets/fonts/jost-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles.css">
+
+<script>
+  /* Marca que hay JS ANTES del primer pintado: el CSS de animaciones
+     sólo se aplica bajo .js, así que si el JS falla o está bloqueado
+     el contenido se ve igual en vez de quedar invisible. */
+  document.documentElement.className = 'js';
+  setTimeout(function () {
+    var h = document.documentElement;
+    if (!h.classList.contains('reveal-ready')) h.classList.add('motion-off');
+  }, 2500);
+</script>
+</head>
+<body>
+
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<div class="rule-top" aria-hidden="true"><span id="progressBar"></span></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../">
+      <span class="brand-mark" aria-hidden="true"></span>
+      Alvaro Aramayo <span class="brand-thin">Desarrollo web</span>
+    </a>
+
+    <button type="button" class="nav-toggle" id="navToggle"
+            aria-expanded="false" aria-controls="menuPrincipal" aria-label="Menú">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+
+    <nav class="menu" id="menuPrincipal" aria-label="Navegación principal">
+
+      <div class="menu-item">
+        <button type="button" class="menu-b" aria-expanded="false" aria-controls="d-serv">
+          Servicios
+          <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>
+        </button>
+        <div class="drop" id="d-serv" hidden>
+          <div class="drop-in">
+            <div class="drop-col">
+              <p class="drop-cap">Sitios web</p>
+              <a href="../precios/#sitios">Landing</a>
+              <a href="../precios/#sitios">Institucional</a>
+              <a href="../precios/#sitios">Institucional Premium</a>
+            </div>
+            <div class="drop-col">
+              <p class="drop-cap">Apps web</p>
+              <a href="../precios/#apps">App Web Básica</a>
+              <a href="../precios/#apps">App Web + Tickets</a>
+              <a href="../precios/#apps">App Web Full</a>
+            </div>
+            <div class="drop-col">
+              <p class="drop-cap">Después de publicar</p>
+              <a href="../precios/#hosting">Hosting y mantenimiento</a>
+              <a href="../precios/#hosting">Dominio propio</a>
+              <a href="../cotizador/">Armar un presupuesto</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <button type="button" class="menu-b" aria-expanded="false" aria-controls="d-rec">
+          Recursos
+          <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>
+        </button>
+        <div class="drop" id="d-rec" hidden>
+          <div class="drop-in">
+            <div class="drop-col">
+              <p class="drop-cap">Referencias</p>
+              <a href="../trabajos/">Trabajos realizados</a>
+              <a href="https://alvaroaramayochain.github.io/" target="_blank" rel="noopener">Portfolio completo</a>
+            </div>
+            <div class="drop-col">
+              <p class="drop-cap">Antes de contratar</p>
+              <a href="../preguntas/">Preguntas frecuentes</a>
+              <a href="../catalogo.pdf" target="_blank" rel="noopener">Catálogo en PDF</a>
+            </div>
+            <div class="drop-col">
+              <p class="drop-cap">Contacto</p>
+              <a href="https://wa.me/543874832897?text=Hola%21%20Quiero%20consultar%20por%20un%20sitio%20web" target="_blank" rel="noopener" data-wa-en="Hi! I'd like to enquire about a website">WhatsApp</a>
+              <a href="mailto:alvaroaramayochain123@gmail.com?subject=Consulta%20por%20servicios%20web">Email</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="menu-b menu-link" href="../precios/">Precios</a>
+    </nav>
+
+    <div class="nav-end">
+      <div class="lang" role="group" aria-label="Idioma">
+        <button type="button" class="lang-b" data-lang="es" lang="es">ES</button>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <button type="button" class="lang-b" data-lang="en" lang="en">EN</button>
+      </div>
+      <a class="btn btn-solid btn-sm" href="../cotizador/">Cotizar</a>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+<section class="band band-first" id="cotizador" aria-labelledby="h-cot">
+  <div class="wrap">
+    <header class="sec">
+      <p class="sec-idx" data-reveal="rise">Cotizador</p>
+      <h1 id="h-cot" class="display" data-reveal="mask">Armá tu presupuesto.</h1>
+      <p class="sec-note" data-reveal="rise" data-delay="1">
+        Seleccioná una base, sumá los módulos que necesites y enviame el detalle por WhatsApp.
+      </p>
+    </header>
+
+    <div class="quote">
+      <div class="quote-pick">
+
+        <fieldset class="qgroup">
+          <legend><span class="qn">A</span> Seleccioná una base</legend>
+          <div class="qopts" id="qBase"></div>
+        </fieldset>
+
+        <fieldset class="qgroup">
+          <legend><span class="qn">B</span> Sumá módulos</legend>
+          <div class="qopts" id="qMods"></div>
+          <p class="qhint">Si tu base ya trae el módulo, aparece como incluido y no se cobra dos veces.</p>
+        </fieldset>
+
+        <fieldset class="qgroup">
+          <legend><span class="qn">C</span> Puesta en marcha</legend>
+          <div class="qopts" id="qExtra"></div>
+          <p class="qhint">El dominio .com.ar se abona aparte: su costo real más la gestión, y queda registrado a tu nombre.</p>
+        </fieldset>
+
+        <noscript>
+          <p class="qhint qhint-noscript">
+            El cotizador necesita JavaScript. Los precios de cada plan están publicados
+            en la lista de precios y podés consultarme directo por
+            <a href="https://wa.me/543874832897?text=Hola%21%20Quiero%20consultar%20por%20un%20sitio%20web" target="_blank" rel="noopener" data-wa-en="Hi! I'd like to ask about a website">WhatsApp</a>.
+          </p>
+        </noscript>
+
+      </div>
+
+      <div class="quote-out">
+        <div class="quote-card" id="qCard">
+          <p class="quote-cap">Tu presupuesto</p>
+
+          <p class="quote-total"><span id="qTotal">$0</span> <span class="quote-cur">ARS</span></p>
+          <p class="quote-usd" id="qUsd" hidden></p>
+          <p class="quote-split" id="qSplit">Seleccioná una base para comenzar</p>
+
+          <div class="quote-empty">
+            <svg class="quote-mark" viewBox="0 0 120 96" aria-hidden="true">
+              <path class="qm-axis" d="M14 10v72h92"/>
+              <path class="qm-line" d="M24 70l22-16 20 10 30-34"/>
+              <g class="qm-tag">
+                <path d="M84 12h22v22l-11 8-11-8z"/>
+                <circle cx="95" cy="21" r="3.4"/>
+              </g>
+            </svg>
+            <p>Seleccioná una opción de la lista y el presupuesto se arma acá.</p>
+          </div>
+
+          <p class="sr-only" id="qStatus" role="status" aria-live="polite"></p>
+          <ul class="quote-lines" id="qLines"></ul>
+
+          <p class="quote-month" id="qMonth" hidden></p>
+
+          <a class="btn btn-gold btn-full" id="qSend"
+             href="https://wa.me/543874832897?text=Hola%21%20Quiero%20consultar%20por%20un%20sitio%20web" target="_blank" rel="noopener" data-wa-en="Hi! I'd like to ask about a website">
+            Enviar este presupuesto
+          </a>
+          <p class="quote-legal">Estimación preliminar. La cotización final se envía por escrito una vez definido el alcance.</p>
+          <p class="quote-legal quote-rate" id="qRate" hidden></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><section class="close" id="contacto" aria-labelledby="h-close">
+  <div class="wrap close-in">
+    <h2 id="h-close" class="display-2" data-reveal="mask">Contame qué hace tu negocio y te digo qué necesita.</h2>
+    <p class="close-note" data-reveal="rise" data-delay="1">
+      No necesitás saber qué contratar. Con que me cuentes a qué se dedica tu negocio,
+      alcanza. Respondo el mismo día.
+    </p>
+    <div class="close-actions" data-reveal="rise" data-delay="2">
+      <a class="btn btn-gold" href="https://wa.me/543874832897?text=Hola%21%20Quiero%20consultar%20por%20un%20sitio%20web" target="_blank" rel="noopener" data-wa-en="Hi! I'd like to ask about a website">WhatsApp</a>
+      <a class="btn btn-line" href="mailto:alvaroaramayochain123@gmail.com?subject=Consulta%20por%20servicios%20web">Email</a>
+      <a class="btn btn-line" href="../catalogo.pdf" target="_blank" rel="noopener">Catálogo en PDF</a>
+    </div>
+  </div>
+</section>
+</main>
+<div class="qbar" id="qBar" hidden>
+  <div class="qbar-in">
+    <p class="qbar-t">Tu presupuesto<span id="qBarTotal">$0</span></p>
+    <a class="btn btn-gold btn-sm" id="qBarSend" href="https://wa.me/543874832897" target="_blank" rel="noopener">Enviar</a>
+  </div>
+</div>
+<a class="wafab" id="waFab" href="https://wa.me/543874832897?text=Hola%21%20Quiero%20consultar%20por%20un%20sitio%20web"
+   target="_blank" rel="noopener" aria-label="Escribirme por WhatsApp" data-wa-en="Hi! I'd like to enquire about a website">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.6-1.2-4.3-3.9-4.5-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-1c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3s.1.6-.1 1.2z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<footer>
+  <div class="wrap foot-in">
+    <p class="foot-name">Alvaro Aramayo Chain<span>Desarrollo web en Salta, Argentina</span></p>
+    <nav class="foot-links" aria-label="Enlaces">
+      <a href="../">Inicio</a>
+      <a href="../precios/">Precios</a>
+      <a href="../cotizador/">Cotizador</a>
+      <a href="../trabajos/">Trabajos</a>
+      <a href="../preguntas/">Preguntas</a>
+      <a href="https://alvaroaramayochain.github.io/" target="_blank" rel="noopener">Portfolio</a>
+      <a href="https://github.com/AlvaroAramayoChain" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:alvaroaramayochain123@gmail.com">Email</a>
+      <a href="../catalogo.pdf" target="_blank" rel="noopener">Catálogo PDF</a>
+    </nav>
+    <p class="foot-legal">Precios en pesos argentinos, sujetos a variación cambiaria y al alcance final de cada proyecto. Última actualización de la lista: agosto de 2026.</p>
+  </div>
+</footer>
+<script src="../assets/catalogo.js"></script>
+
+<script src="../assets/i18n.js"></script>
+<script src="../script.js" defer></script>
+</body>
+</html>

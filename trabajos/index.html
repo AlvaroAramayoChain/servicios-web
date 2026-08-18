@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
+
+<title>Proyectos realizados | Alvaro Aramayo Chain</title>
+<meta name="description" content="Tres proyectos reales de desarrollo web: un sitio institucional con módulo de tickets, un catálogo de productos y una página de anticipo.">
+<link rel="canonical" href="https://alvaroaramayochain.github.io/servicios-web/trabajos/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Alvaro Aramayo Chain — Desarrollo web">
+<meta property="og:title" content="Proyectos realizados">
+<meta property="og:description" content="Tres proyectos reales de desarrollo web y sistemas a medida.">
+<meta property="og:url" content="https://alvaroaramayochain.github.io/servicios-web/trabajos/">
+<meta property="og:image" content="https://alvaroaramayochain.github.io/servicios-web/assets/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Proyectos realizados">
+<meta name="twitter:description" content="Tres proyectos reales de desarrollo web y sistemas a medida.">
+<meta name="twitter:image" content="https://alvaroaramayochain.github.io/servicios-web/assets/og-cover.jpg">
+
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+<link rel="preload" href="../assets/fonts/jost-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles.css">
+
+<script>
+  /* Marca que hay JS ANTES del primer pintado: el CSS de animaciones
+     sólo se aplica bajo .js, así que si el JS falla o está bloqueado
+     el contenido se ve igual en vez de quedar invisible. */
+  document.documentElement.className = 'js';
+  setTimeout(function () {
+    var h = document.documentElement;
+    if (!h.classList.contains('reveal-ready')) h.classList.add('motion-off');
+  }, 2500);
+</script>
+</head>
+<body>
+
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<div class="rule-top" aria-hidden="true"><span id="progressBar"></span></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../">
+      <span class="brand-mark" aria-hidden="true"></span>
+      Alvaro Aramayo <span class="brand-thin">Desarrollo web</span>
+    </a>
+
+    <button type="button" class="nav-toggle" id="navToggle"
+            aria-expanded="false" aria-controls="menuPrincipal" aria-label="Menú">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+
+    <nav class="menu" id="menuPrincipal" aria-label="Navegación principal">
+
+      <div class="menu-item">
+        <button type="button" class="menu-b" aria-expanded="false" aria-controls="d-serv">
+          Servicios
+          <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>
+        </button>
+        <div class="drop" id="d-serv" hidden>
+          <div class="drop-in">
+            <div class="drop-col">
+              <p class="drop-cap">Sitios web</p>
+              <a href="../precios/#sitios">Landing</a>
+              <a href="../precios/#sitios">Institucional</a>
+              <a href="../precios/#sitios">Institucional Premium</a>
+            </div>
+            <div class="drop-col">
+              <p class="drop-cap">Apps web</p>
+              <a href="../precios/#apps">App Web Básica</a>
+              <a href="../precios/#apps">App Web + Tickets</a>
+              <a href="../precios/#apps">App Web Full</a>
+            </div>
+            <div class="drop-col">
+              <p class="drop-cap">Después de publicar</p>
+              <a href="../precios/#hosting">Hosting y mantenimiento</a>
+              <a href="../precios/#hosting">Dominio propio</a>
+              <a href="../cotizador/">Armar un presupuesto</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <button type="button" class="menu-b" aria-expanded="false" aria-controls="d-rec">
+          Recursos
+          <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>
+        </button>
+        <div class="drop" id="d-rec" hidden>
+          <div class="drop-in">
+            <div class="drop-col">
+              <p class="drop-cap">Referencias</p>
+              <a href="../trabajos/">Trabajos realizados</a>
+              <a href="https://alvaroaramayochain.github.io/" target="_blank" rel="noopener">Portfolio completo</a>
+            </div>
+            <div class="drop-col">
+              <p class="drop-cap">Antes de contratar</p>
+              <a href="../preguntas/">Preguntas frecuentes</a>
+              <a href="../catalogo.pdf" target="_blank" rel="noopener">Catálogo en PDF</a>
+            </div>
+            <div class="drop-col">
+              <p class="drop-cap">Contacto</p>
+              <a href="https://wa.me/543874832897?text=Hola%21%20Quiero%20consultar%20por%20un%20sitio%20web" target="_blank" rel="noopener" data-wa-en="Hi! I'd like to enquire about a website">WhatsApp</a>
+              <a href="mailto:alvaroaramayochain123@gmail.com?subject=Consulta%20por%20servicios%20web">Email</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="menu-b menu-link" href="../precios/">Precios</a>
+    </nav>
+
+    <div class="nav-end">
+      <div class="lang" role="group" aria-label="Idioma">
+        <button type="button" class="lang-b" data-lang="es" lang="es">ES</button>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <button type="button" class="lang-b" data-lang="en" lang="en">EN</button>
+      </div>
+      <a class="btn btn-solid btn-sm" href="../cotizador/">Cotizar</a>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+<section class="band band-first" id="trabajos" aria-labelledby="h-trab">
+  <div class="wrap">
+    <header class="sec sec-wide">
+      <div>
+        <p class="sec-idx" data-reveal="rise">Trabajos</p>
+        <h1 id="h-trab" class="display" data-reveal="mask">Proyectos realizados.</h1>
+      </div>
+      <p class="sec-note" data-reveal="rise" data-delay="1">
+        Tres proyectos reales. El portfolio incluye una recreación simplificada de cada uno:
+        no se publican nombres de clientes, datos de contacto ni información comercial.
+      </p>
+    </header>
+
+    <div class="works" data-stagger>
+
+      <article class="work">
+        <p class="work-kind">Sitio institucional</p>
+        <h3 class="work-name">Salta Sistemas</h3>
+        <p class="work-desc">Sitio institucional para una empresa de servicios informáticos, con catálogo de servicios, portfolio propio y módulo de tickets para los reclamos de sus clientes.</p>
+        <ul class="work-tags"><li>Python</li><li>Django</li><li>Tickets</li><li>SEO</li></ul>
+        <p class="work-state"><span class="work-dot is-done" aria-hidden="true"></span>Entregado</p>
+      </article>
+
+      <article class="work">
+        <p class="work-kind">Catálogo de productos</p>
+        <h3 class="work-name">mochec</h3>
+        <p class="work-desc">Catálogo y sitio institucional para una empresa de agroquímicos. Las fichas de producto se cargan desde un archivo de datos, sin tocar el diseño, y cada una deriva a WhatsApp.</p>
+        <ul class="work-tags"><li>Python</li><li>Flask</li><li>Catálogo JSON</li><li>WhatsApp</li></ul>
+        <p class="work-state"><span class="work-dot is-wip" aria-hidden="true"></span>En desarrollo</p>
+      </article>
+
+      <article class="work">
+        <p class="work-kind">Página de una sola pantalla</p>
+        <h3 class="work-name">Próximamente</h3>
+        <p class="work-desc">Página de anticipo para un negocio cuyo sitio completo está en construcción: identidad propia, captura de contacto y diseño móvil primero.</p>
+        <ul class="work-tags"><li>HTML</li><li>CSS</li><li>Mobile first</li></ul>
+        <p class="work-state"><span class="work-dot is-tpl" aria-hidden="true"></span>Plantilla reutilizable</p>
+      </article>
+
+    </div>
+
+    <div class="works-foot">
+      <a class="btn btn-line" href="https://alvaroaramayochain.github.io/" target="_blank" rel="noopener">
+        Ver el portfolio completo
+        <svg class="ico-out" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+      </a>
+      <a class="btn btn-gold" href="https://wa.me/543874832897?text=Hola%21%20Vi%20tus%20trabajos%20y%20quiero%20consultar%20por%20algo%20parecido" target="_blank" rel="noopener" data-wa-en="Hi! I saw your work and I'd like something similar">Solicitar un proyecto similar</a>
+    </div>
+  </div>
+</section><section class="close" id="contacto" aria-labelledby="h-close">
+  <div class="wrap close-in">
+    <h2 id="h-close" class="display-2" data-reveal="mask">Contame qué hace tu negocio y te digo qué necesita.</h2>
+    <p class="close-note" data-reveal="rise" data-delay="1">
+      No necesitás saber qué contratar. Con que me cuentes a qué se dedica tu negocio,
+      alcanza. Respondo el mismo día.
+    </p>
+    <div class="close-actions" data-reveal="rise" data-delay="2">
+      <a class="btn btn-gold" href="https://wa.me/543874832897?text=Hola%21%20Quiero%20consultar%20por%20un%20sitio%20web" target="_blank" rel="noopener" data-wa-en="Hi! I'd like to ask about a website">WhatsApp</a>
+      <a class="btn btn-line" href="mailto:alvaroaramayochain123@gmail.com?subject=Consulta%20por%20servicios%20web">Email</a>
+      <a class="btn btn-line" href="../catalogo.pdf" target="_blank" rel="noopener">Catálogo en PDF</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<a class="wafab" id="waFab" href="https://wa.me/543874832897?text=Hola%21%20Quiero%20consultar%20por%20un%20sitio%20web"
+   target="_blank" rel="noopener" aria-label="Escribirme por WhatsApp" data-wa-en="Hi! I'd like to enquire about a website">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.6-1.2-4.3-3.9-4.5-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-1c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3s.1.6-.1 1.2z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<footer>
+  <div class="wrap foot-in">
+    <p class="foot-name">Alvaro Aramayo Chain<span>Desarrollo web en Salta, Argentina</span></p>
+    <nav class="foot-links" aria-label="Enlaces">
+      <a href="../">Inicio</a>
+      <a href="../precios/">Precios</a>
+      <a href="../cotizador/">Cotizador</a>
+      <a href="../trabajos/">Trabajos</a>
+      <a href="../preguntas/">Preguntas</a>
+      <a href="https://alvaroaramayochain.github.io/" target="_blank" rel="noopener">Portfolio</a>
+      <a href="https://github.com/AlvaroAramayoChain" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:alvaroaramayochain123@gmail.com">Email</a>
+      <a href="../catalogo.pdf" target="_blank" rel="noopener">Catálogo PDF</a>
+    </nav>
+    <p class="foot-legal">Precios en pesos argentinos, sujetos a variación cambiaria y al alcance final de cada proyecto. Última actualización de la lista: agosto de 2026.</p>
+  </div>
+</footer>
+
+<script src="../assets/i18n.js"></script>
+<script src="../script.js" defer></script>
+</body>
+</html>

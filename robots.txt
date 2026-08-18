@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alvaroaramayochain.github.io/servicios-web/sitemap.xml
