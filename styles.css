@@ -379,8 +379,31 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
    corrido al margen. La primera pantalla no explica: afirma.
    =========================================================== */
 .hero{
-  padding:clamp(56px,8vw,104px) var(--pad) 0;
-  max-width:var(--maxw);margin:0 auto;position:relative;
+  position:relative;isolation:isolate;overflow:hidden;
+  padding:clamp(56px,8vw,104px) 0 clamp(44px,5vw,72px);
+}
+/* la columna de contenido sigue midiendo lo mismo que el resto del sitio;
+   lo que cambia es que la seccion ahora va a ancho completo para que la
+   foto sangre de borde a borde */
+.hero-in{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);position:relative;}
+.hero-bg{position:absolute;inset:0;z-index:-2;}
+.hero-bg img{
+  width:100%;height:100%;object-fit:cover;object-position:center;display:block;
+  filter:brightness(.95) contrast(1.02) saturate(.88) hue-rotate(-4deg);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    /* la foto emerge desde la nav y se apaga al pie, en vez de arrancar
+       y cortarse con dos costuras horizontales */
+    linear-gradient(180deg,var(--ink) 0%,rgba(11,11,10,.58) 11%,
+                    rgba(11,11,10,0) 32%,rgba(11,11,10,0) 60%,
+                    rgba(11,11,10,.52) 100%),
+    /* placa en diagonal: el titular vive arriba a la izquierda y la
+       diagonal dorada de la foto entra por abajo a la derecha, asi que
+       casi no se pisan */
+    linear-gradient(112deg,rgba(11,11,10,.93) 0%,rgba(11,11,10,.74) 38%,
+                    rgba(11,11,10,.30) 66%,rgba(11,11,10,.10) 100%);
 }
 .hero-say{position:relative;}
 /* flex y no inline-flex: en inline-flex la caja se dimensiona a su contenido,
@@ -1303,6 +1326,20 @@ footer{
      composicion de celular es otra: banda de foto arriba, texto abajo sobre
      placa. Y el recorte se elige a mano por seccion para que cada foto
      muestre su motivo y no un hueco. */
+  /* La foto del hero es 16:9 en una caja alta: solo entra una cuarta parte
+     del ancho. Centrada caia en la zona plana y la diagonal dorada quedaba
+     recortada, o sea que la imagen no aportaba nada. Corrida a la derecha,
+     la diagonal entra al pie del hero. */
+  .hero-bg img{object-position:82% center;}
+  .hero::after{
+    background:
+      linear-gradient(180deg,var(--ink) 0%,rgba(11,11,10,.60) 9%,
+                      rgba(11,11,10,.10) 26%,rgba(11,11,10,.10) 68%,
+                      rgba(11,11,10,.34) 100%),
+      linear-gradient(150deg,rgba(11,11,10,.90) 0%,rgba(11,11,10,.66) 44%,
+                      rgba(11,11,10,.20) 78%,rgba(11,11,10,.06) 100%);
+  }
+
   .shot{align-items:flex-end;}
   .shot-bg img,.shot-alt .shot-bg img{object-position:center;}
   #sitios-info  .shot-bg img{object-position:74% center;}  /* el laptop */
@@ -1366,5 +1403,5 @@ footer{
   .btn{padding:15px 20px;}
   .btn-sm{padding:9px 13px;font-size:10px;}
   .brand{font-size:16px;gap:10px;}
-  .hero{padding-left:var(--pad);padding-right:var(--pad);}
+  .hero-in{padding-left:var(--pad);padding-right:var(--pad);}
 }

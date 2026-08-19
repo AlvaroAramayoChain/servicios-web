@@ -427,6 +427,26 @@ argumentos que ya están escritos en la página (precio publicado, dominio a tu
 nombre, diseño sin plantillas). Si los cambiás, que no pasen de **26
 caracteres**: el riel mide 168px y a 10px de monoespaciada no entra más.
 
+### La foto del hero
+
+`assets/bg/hero.webp` va a sangre detrás del titular. Para eso la sección es de
+ancho completo y el contenido vive en `.hero-in`, que mantiene la misma columna
+que el resto del sitio.
+
+El escrito hace dos cosas a la vez: una placa en diagonal a 112° que oscurece
+arriba a la izquierda, donde vive el titular, y deja abierta la esquina inferior
+derecha, por donde entra la diagonal dorada de la foto; y un degradado vertical
+que hace que la imagen **emerja desde la nav y se apague al pie**, en vez de
+arrancar y cortarse con dos costuras horizontales.
+
+En celular la caja es alta y angosta: de una foto 16:9 sólo entra una cuarta
+parte del ancho. Centrada caía en la zona plana y la diagonal quedaba recortada,
+así que ahí el encuadre se corre a `82% center` y el escrito se aclara.
+
+**Peso:** 14 KB. El archivo entregado era un PNG de 448 KB con extensión `.webp`.
+Ojo con la calidad al reconvertir: a q82 la trama de puntos del fondo desaparece.
+q92 la conserva y sigue pesando 14 KB, porque la imagen es casi plana.
+
 ### El riel al margen
 
 A partir de 1024 px los rótulos numerados (`01 — Sitios web`) **salen de la columna
