@@ -30,7 +30,7 @@ La regla de esta etapa: **no agregar infraestructura por anticipación.**
 | Estructura | HTML5 semántico | Se indexa y se lee sin JavaScript |
 | Estilos | CSS puro con variables | Sin build, sin preprocesador, sin framework |
 | Comportamiento | JavaScript sin dependencias (~20 KB) | Cero librerías externas que puedan caerse |
-| Tipografía | Jost variable autoalojada (27 KB) + serif del sistema | Dos familias, ninguna descargada de terceros |
+| Tipografía | Jost variable autoalojada (27 KB) + serif y mono del sistema | Tres familias, ninguna descargada de terceros |
 | Animación | Web Animations API + IntersectionObserver | Nativo del navegador |
 | Idiomas | Diccionario en `assets/i18n.js` | Español e inglés, sin duplicar el sitio |
 | Cotización del dólar | `dolarapi.com` desde el navegador | Sin servidor, con respaldo fijo si falla |
@@ -294,7 +294,7 @@ landing. Todo lo que sigue sostiene esa idea.
 
 ### Tipografía
 
-**Dos familias, y el contraste entre ellas es la identidad.** Los titulares van en
+**Dos familias para el contenido, y el contraste entre ellas es la identidad.** Los titulares van en
 una serif old-style; la interfaz y todos los números, en una geométrica. Esa tensión
 —una propuesta escrita en serif, un precio escrito como dato duro— es lo primero que
 separa al sitio de una landing generada, porque las plantillas usan geométrica para
@@ -400,6 +400,33 @@ dibujando el PNG en un canvas de Chrome y exportando con
 `toDataURL('image/webp', .82)`. A ese tamano el resultado es indistinguible del
 PNG original de 1,2 MB.
 
+### El menú
+
+Seis destinos en una fila, sin desplegables: Inicio, Precios, Cotizador,
+Trabajos, Preguntas y Portfolio. Cada elemento es una página real y se llega en
+un clic. La página actual lleva `is-active` y `aria-current="page"`, escritos a
+mano en cada HTML, y se marca con el filete de latón (con el color del acento en
+celular, que en una lista apilada se lee mejor).
+
+**El umbral del menú es 1120px, no 1024 como el del riel.** Son dos ajustes
+distintos que antes compartían número por casualidad: con seis destinos más la
+marca, el idioma y el botón, la barra se desbordaba 47px justo a 1024. Por
+debajo de 1120 el menú se guarda detrás del botón. Si cambiás la cantidad de
+enlaces o sus etiquetas, revisá ese umbral: `esAncho()` en `script.js` tiene que
+seguir usando el mismo número que el CSS.
+
+### La columna de código del hero
+
+Ocupa el margen del titular, donde antes iba el rótulo de estado. Escribe un
+bloque línea por línea, lo deja 2,6s y lo borra letra por letra para escribir el
+siguiente. La caja reserva sus cuatro filas siempre, así que no empuja al
+titular ni un píxel.
+
+Los bloques están en `script.js` y no son código de relleno: repiten tres
+argumentos que ya están escritos en la página (precio publicado, dominio a tu
+nombre, diseño sin plantillas). Si los cambiás, que no pasen de **26
+caracteres**: el riel mide 168px y a 10px de monoespaciada no entra más.
+
 ### El riel al margen
 
 A partir de 1024 px los rótulos numerados (`01 — Sitios web`) **salen de la columna
@@ -444,12 +471,19 @@ de filas (`[data-stagger]`), que arranca en latón y sigue en hueso.
 Más las microinteracciones: el relleno de los botones secundarios entra desde abajo,
 las filas se corren unos píxeles al pasar el mouse, el borde izquierdo del plan
 abierto se enciende en latón, los enlaces con flecha abren el espacio entre texto e
-ícono, el panel del menú baja seis píxeles al aparecer.
+ícono, la página actual lleva su filete de latón puesto en el menú.
 
 **Lo que no va**, porque delata una plantilla automática: tarjetas idénticas para
 todo, tres columnas con íconos, círculos decorativos, puntos entre frases como
 adorno, efectos de vidrio, glows, elementos flotando, degradados que sólo están para
 "verse modernos", y cualquier cosa que se mueva en bucle.
+
+**La única excepción, y es deliberada:** la columna de código del hero se
+escribe y se borra sin parar. Rompe la regla de arriba a pedido expreso. Para
+que no abarate el conjunto se la mantiene en el margen, en cuerpo de 10px y en
+tono bajo, con `prefers-reduced-motion` dejándola quieta. Si alguna vez estorba,
+se saca borrando el `<div class="hero-code">` del HTML: el CSS y el JS la
+detectan por `#heroCode` y no hacen nada si no está.
 
 Si vas a agregar una animación, la prueba es: **¿comunica algo que sin ella no se
 entiende?** Si la respuesta es no, no va.

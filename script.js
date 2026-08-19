@@ -160,88 +160,44 @@
 
   /* =========================================================
      3. MENÚ PRINCIPAL
-     Un desplegable por grupo. En escritorio se abre al pasar el
-     mouse y con clic; en celular el menú entero se despliega desde
-     el botón, y cada grupo funciona como acordeón.
+     Seis enlaces planos. En escritorio no hay nada que abrir: cada
+     elemento es un destino y se llega en un clic. En pantallas
+     angostas el menú entero se despliega desde el botón.
      ========================================================= */
   var menu    = $('#menuPrincipal');
   var navBtn  = $('#navToggle');
-  var grupos  = $$('.menu-item');
-  var esAncho  = function () { return window.matchMedia('(min-width:1024px)').matches; };
-  var conHover = function () { return window.matchMedia('(hover:hover)').matches; };
+  // mismo umbral que el CSS: arriba de 1120 el menú vive en la barra
+  var esAncho = function () { return window.matchMedia('(min-width:1120px)').matches; };
 
-  function cerrarGrupos(excepto) {
-    grupos.forEach(function (g) {
-      var b = $('.menu-b', g), d = $('.drop', g);
-      if (!b || !d || g === excepto) return;
-      b.setAttribute('aria-expanded', 'false');
-      d.hidden = true;
-      g.classList.remove('is-open');
-    });
+  function cerrarMenu(devolverFoco) {
+    if (!navBtn || navBtn.getAttribute('aria-expanded') !== 'true') return;
+    navBtn.setAttribute('aria-expanded', 'false');
+    html.classList.remove('menu-abierto');
+    if (devolverFoco) navBtn.focus();
   }
-
-  function abrirGrupo(g, abrir) {
-    var b = $('.menu-b', g), d = $('.drop', g);
-    if (!b || !d) return;
-    if (abrir) cerrarGrupos(g);
-    b.setAttribute('aria-expanded', abrir ? 'true' : 'false');
-    d.hidden = !abrir;
-    g.classList.toggle('is-open', abrir);
-  }
-
-  grupos.forEach(function (g) {
-    var b = $('.menu-b', g);
-    if (!b || !$('.drop', g)) return;
-
-    b.addEventListener('click', function (e) {
-      e.preventDefault();
-      // En escritorio con mouse manda el hover: si el clic también alternara,
-      // abrir con el puntero y después hacer clic lo cerraría de golpe.
-      // El teclado sí alterna (un clic de teclado llega con detail 0).
-      var conTeclado = e.detail === 0;
-      if (esAncho() && conHover() && !conTeclado) return;
-      abrirGrupo(g, b.getAttribute('aria-expanded') !== 'true');
-    });
-
-    g.addEventListener('mouseenter', function () { if (esAncho() && conHover()) abrirGrupo(g, true); });
-    g.addEventListener('mouseleave', function () { if (esAncho() && conHover()) abrirGrupo(g, false); });
-    // con teclado: al entrar al grupo se abre, al salir se cierra
-    g.addEventListener('focusin', function () { if (esAncho()) abrirGrupo(g, true); });
-    g.addEventListener('focusout', function (e) {
-      if (esAncho() && !g.contains(e.relatedTarget)) abrirGrupo(g, false);
-    });
-  });
 
   if (navBtn && menu) {
     navBtn.addEventListener('click', function () {
       var abierto = navBtn.getAttribute('aria-expanded') === 'true';
       navBtn.setAttribute('aria-expanded', abierto ? 'false' : 'true');
-      document.documentElement.classList.toggle('menu-abierto', !abierto);
-      if (abierto) cerrarGrupos(null);
+      html.classList.toggle('menu-abierto', !abierto);
     });
   }
 
   document.addEventListener('keydown', function (e) {
-    if (e.key !== 'Escape') return;
-    cerrarGrupos(null);
-    if (navBtn && navBtn.getAttribute('aria-expanded') === 'true') {
-      navBtn.setAttribute('aria-expanded', 'false');
-      document.documentElement.classList.remove('menu-abierto');
-      navBtn.focus();
-    }
+    if (e.key === 'Escape') cerrarMenu(true);
   });
 
+  // un clic fuera del menú abierto lo cierra
   document.addEventListener('click', function (e) {
-    if (menu && !menu.contains(e.target) && (!navBtn || !navBtn.contains(e.target))) {
-      cerrarGrupos(null);
-    }
+    if (!menu || menu.contains(e.target)) return;
+    if (navBtn && navBtn.contains(e.target)) return;
+    cerrarMenu(false);
   });
 
+  // al pasar a escritorio el menú vuelve a su barra: el estado abierto sobra
   window.addEventListener('resize', function () {
-    if (esAncho() && navBtn && navBtn.getAttribute('aria-expanded') === 'true') {
-      navBtn.setAttribute('aria-expanded', 'false');
-      document.documentElement.classList.remove('menu-abierto');
-    }
+    if (esAncho()) cerrarMenu(false);
   }, { passive: true });
 
   /* =========================================================
@@ -361,6 +317,103 @@
     bands.forEach(function (b) { bandIO.observe(b); });
   }
   markBands();
+
+  /* =========================================================
+     4b. COLUMNA DE CÓDIGO DEL HERO
+     Escribe un bloque línea por línea, lo deja un momento y lo borra
+     letra por letra para escribir el siguiente.
+
+     Es la única animación en bucle del sitio y contradice la regla de
+     la casa ("nada que se mueva en bucle"), a pedido expreso. Para que
+     no abarate el conjunto va en el margen, en cuerpo chico y en tono
+     bajo: acompaña al titular en vez de competirle.
+
+     Los bloques no son código de relleno: repiten tres argumentos que
+     ya están escritos en la página (precio publicado, dominio a tu
+     nombre, diseño sin plantillas).
+     ========================================================= */
+  (function () {
+    var caja = $('#heroCode');
+    if (!caja) return;
+
+    var BLOQUES = [
+      ['const sitio = {',
+       "  precio: 'publicado',",
+       "  dominio: 'a tu nombre'",
+       '};'],
+      ['.sitio {',
+       '  diseño: a-medida;',
+       '  plantillas: none;',
+       '}'],
+      ['<main>',
+       '  <h1>Tu negocio</h1>',
+       '</main>']
+    ];
+
+    var FILAS = 4;                       // alto fijo: la caja nunca empuja al titular
+    var V_ESCRIBE = 45, V_BORRA = 22;    // ms por letra
+    var P_LINEA = 170, P_BLOQUE = 2600, P_CICLO = 500;
+
+    var filas = [];
+    for (var i = 0; i < FILAS; i++) {
+      var sp = document.createElement('span');
+      sp.className = 'cl';
+      caja.appendChild(sp);
+      filas.push(sp);
+    }
+
+    var b = 0, l = 0, c = 0, fase = 'escribe', reloj = null;
+
+    function pinta() {
+      var bloque = BLOQUES[b];
+      for (var i = 0; i < FILAS; i++) {
+        var txt = '';
+        if (i < bloque.length) {
+          if (i < l) txt = bloque[i];
+          else if (i === l) txt = bloque[i].slice(0, c);
+        }
+        filas[i].textContent = txt;
+        filas[i].classList.toggle('activa', i === l);
+      }
+    }
+
+    // sin movimiento: el primer bloque queda escrito y quieto, sin cursor
+    if (REDUCE) {
+      l = BLOQUES[0].length - 1;
+      c = BLOQUES[0][l].length;
+      pinta();
+      for (var k = 0; k < FILAS; k++) filas[k].classList.remove('activa');
+      return;
+    }
+
+    function paso() {
+      var bloque = BLOQUES[b], t = V_ESCRIBE;
+
+      if (fase === 'escribe') {
+        if (c < bloque[l].length) c++;
+        else if (l < bloque.length - 1) { l++; c = 0; t = P_LINEA; }
+        else { fase = 'espera'; t = P_BLOQUE; }
+      } else if (fase === 'espera') {
+        fase = 'borra'; t = V_BORRA;
+      } else {
+        if (c > 0) { c--; t = V_BORRA; }
+        else if (l > 0) { l--; c = bloque[l].length; t = V_BORRA; }
+        else { b = (b + 1) % BLOQUES.length; fase = 'escribe'; t = P_CICLO; }
+      }
+
+      pinta();
+      reloj = setTimeout(paso, t);
+    }
+
+    pinta();
+    reloj = setTimeout(paso, 900);       // deja que entre primero el titular
+
+    /* con la pestaña en segundo plano no tiene sentido seguir escribiendo */
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { clearTimeout(reloj); reloj = null; }
+      else if (!reloj) { reloj = setTimeout(paso, 300); }
+    });
+  })();
 
   /* =========================================================
      5. NAV — progreso, sombra al despegar y sección activa

@@ -76,6 +76,10 @@
           Georgia,'Times New Roman',serif;
   --sans:'Jost','Century Gothic','URW Gothic',system-ui,-apple-system,
          'Segoe UI',sans-serif;
+  /* tercera familia, de uso unico: la columna de codigo del hero. El codigo
+     escrito en una geometrica no se lee como codigo y no alinea. */
+  --mono:ui-monospace,'SF Mono','Cascadia Mono','Segoe UI Mono',Consolas,
+         'Liberation Mono',Menlo,monospace;
 
   /* ritmo vertical */
   --s1:4px;  --s2:8px;  --s3:12px; --s4:16px;
@@ -159,7 +163,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
 
 /* rótulo de índice: versalitas espaciadas en la geométrica. Etiqueta,
    nunca decora. Es la voz técnica que equilibra los titulares serif */
-.eyebrow,.sec-idx,.ficha-cap,.quote-cap,.work-kind,.qbar-t,.drop-cap{
+.eyebrow,.sec-idx,.ficha-cap,.quote-cap,.work-kind,.qbar-t{
   font-family:var(--sans);
   font-size:10.5px;font-weight:500;
   letter-spacing:.18em;text-transform:uppercase;
@@ -248,13 +252,14 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
 
 /* ===========================================================
    MENÚ PRINCIPAL
-   El panel baja como una hoja: filete de latón arriba, columnas
-   separadas por filetes. Nada flotando ni redondeado.
+   Seis destinos en una sola fila, sin desplegables. Versalitas
+   espaciadas y un filete de latón que se dibuja al pasar el mouse; la
+   página actual lo lleva puesto. No hay nada que abrir ni cerrar: cada
+   elemento del menú es un destino real, y se llega en un clic.
    =========================================================== */
-.menu{display:flex;align-items:center;gap:var(--s7);margin-left:auto;}
-.menu-item{position:relative;}
+.menu{display:flex;align-items:center;gap:var(--s6);margin-left:auto;}
 .menu-b{
-  display:inline-flex;align-items:center;gap:8px;
+  display:inline-flex;align-items:center;
   font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;
   color:var(--bone-2);
   padding:12px 0;white-space:nowrap;position:relative;
@@ -265,36 +270,10 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
   background:var(--brass);transform:scaleX(0);transform-origin:right;
   transition:transform var(--t-mid) var(--ease);
 }
-.menu-b:hover,.menu-item.is-open .menu-b,.menu-link.is-active{color:var(--bone);}
-.menu-b:hover::after,.menu-item.is-open .menu-b::after,.menu-link.is-active::after{
+.menu-b:hover,.menu-link.is-active{color:var(--bone);}
+.menu-b:hover::after,.menu-link.is-active::after{
   transform:scaleX(1);transform-origin:left;
 }
-.chev{width:10px;height:10px;fill:none;stroke:currentColor;stroke-width:1.6;
-  stroke-linecap:round;stroke-linejoin:round;
-  transition:transform var(--t-mid) var(--ease);}
-.menu-item.is-open .chev{transform:rotate(180deg);}
-
-.drop{
-  position:absolute;top:calc(100% + 15px);left:-28px;z-index:60;
-  min-width:660px;
-  background:var(--surface);
-  border:1px solid var(--line);border-top:2px solid var(--brass);
-  box-shadow:0 34px 80px -34px #000;
-}
-/* el panel está oculto con [hidden], así que no hay transición posible:
-   se anima al aparecer, una vez y corto */
-.js .drop:not([hidden]){animation:dropIn .26s var(--ease-out) both;}
-@keyframes dropIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
-.drop-in{display:grid;grid-template-columns:repeat(3,minmax(190px,1fr));}
-.drop-col{padding:var(--s5) var(--s6);border-left:1px solid var(--line);}
-.drop-col:first-child{border-left:0;}
-.drop-cap{color:var(--brass-hi);margin-bottom:var(--s4);}
-.drop-col a{
-  display:block;font-size:14px;color:var(--bone-2);padding:9px 0;
-  border-bottom:1px solid transparent;width:fit-content;
-  transition:color var(--t-fast),border-color var(--t-fast);
-}
-.drop-col a:hover{color:var(--bone);border-bottom-color:var(--brass);}
 
 /* botón de menú angosto: dos filetes, no un ícono genérico */
 .nav-toggle{display:none;width:34px;height:34px;position:relative;margin-left:auto;}
@@ -408,8 +387,33 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
    y el texto largo del rotulo estiraba el documento mas alla de la pantalla
    del celular. Como flex queda atada al ancho del contenedor y el texto parte. */
 .eyebrow{display:flex;align-items:flex-start;gap:11px;margin-bottom:var(--s5);}
-/* cuadrado sólido, sin latido. Indica estado, no pide atención */
-.dot{width:7px;height:7px;background:var(--ok);flex:none;margin-top:5px;}
+
+/* ---------- COLUMNA DE CÓDIGO ----------
+   Ocupa el margen del hero, donde antes iba el rótulo de estado: es "el
+   costado izquierdo del titular". Se escribe y se borra sola.
+   Es la única animación en bucle del sitio, y va en contra de la regla de
+   la casa a pedido expreso. Para que no cheapee el conjunto se la mantiene
+   chica, en tono bajo y en el margen: acompaña al titular, no le compite.
+   Con prefers-reduced-motion queda un bloque fijo, sin movimiento. */
+.hero-code{
+  font-family:var(--mono);
+  font-size:10px;line-height:2.05;letter-spacing:0;
+  color:var(--bone-3);
+  white-space:pre;
+  margin-bottom:var(--s5);
+}
+/* la caja reserva sus cuatro filas: al escribirse y borrarse no empuja
+   al titular ni un pixel */
+.js .hero-code{min-height:calc(4 * 2.05em);}
+.hero-code .cl{display:block;min-height:1em;opacity:.6;}
+.hero-code .cl.activa{opacity:1;color:var(--bone-2);}
+.hero-code .cl.activa::after{
+  content:"";display:inline-block;
+  width:.5em;height:1.05em;vertical-align:-.2em;margin-left:1px;
+  background:var(--brass);
+  animation:cursor 1.05s steps(1) infinite;
+}
+@keyframes cursor{50%{opacity:0;}}
 .hero .display{max-width:20ch;}
 .lead{margin-top:var(--s5);max-width:49ch;}
 .hero-actions{margin-top:var(--s7);display:flex;gap:var(--s3);flex-wrap:wrap;}
@@ -458,16 +462,9 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
     display:grid;grid-template-columns:var(--rail) minmax(0,1fr);
     column-gap:var(--s7);
   }
-  .hero-say > .eyebrow{
+  .hero-say > .hero-code{
     grid-column:1;grid-row:1;
-    display:block;margin:0;padding-top:.9em;
-    font-size:10px;line-height:1.95;letter-spacing:.115em;
-  }
-  .hero-say > .eyebrow .dot{display:block;margin:0 0 14px;}
-  /* el filete baja por el margen y ata el rótulo al titular */
-  .hero-say > .eyebrow::after{
-    content:"";display:block;width:1px;height:104px;margin-top:22px;
-    background:linear-gradient(180deg,var(--line-2),transparent);
+    margin:0;padding-top:.9em;
   }
   .hero-say > .display{grid-column:2;grid-row:1;}
   .hero-say > .lead{grid-column:2;grid-row:2;}
@@ -1236,9 +1233,11 @@ footer{
    =========================================================== */
 
 /* ---------- MENÚ EN PANTALLAS ANGOSTAS ----------
-   Hasta 1023 el menú se guarda detrás del botón y baja como una hoja
-   a lo ancho. Los grupos pasan a ser acordeones apilados. */
-@media (max-width:1023px){
+   El menú se guarda detrás del botón y baja como una hoja a lo ancho.
+   El umbral es 1119 y no 1023 como el del riel: con seis destinos, más
+   la marca, el idioma y el botón, la barra recién respira a partir de
+   1120. Antes de eso se apretaba y a 1024 se desbordaba 47px. */
+@media (max-width:1119px){
   .nav-toggle{display:block;}
   .brand-thin{display:none;}
   .nav,.nav.is-stuck{
@@ -1257,36 +1256,30 @@ footer{
   .menu-abierto .menu{display:flex;}
   .menu-abierto .nav-inner{flex-wrap:wrap;padding-bottom:var(--s4);}
 
-  .menu-item{border-bottom:1px solid var(--line);}
+  /* apilado, un destino por fila. Sin subrayado: la pagina actual se
+     marca con el color del acento, que en una lista se lee mejor */
   .menu-b{
-    width:100%;justify-content:space-between;
-    padding:18px 0;font-size:12px;letter-spacing:.16em;color:var(--bone);
+    width:100%;padding:17px 0;font-size:12px;letter-spacing:.16em;
+    color:var(--bone);border-bottom:1px solid var(--line);
   }
+  .menu-b:last-child{border-bottom:0;}
   .menu-b::after{display:none;}
-  .menu-link{border-bottom:1px solid var(--line);}
-
-  .drop{
-    position:static;min-width:0;border:0;box-shadow:none;
-    background:transparent;animation:none;
-  }
-  .drop-in{grid-template-columns:1fr;}
-  .drop-col{
-    padding:var(--s4) 0 var(--s5);border-left:0;
-    border-top:1px solid var(--line-2);
-  }
-  .drop-cap{margin-bottom:var(--s3);}
+  .menu-link.is-active{color:var(--brass-hi);}
 }
 
-@media (min-width:1024px) and (max-width:1240px){
-  .menu{gap:var(--s6);}
-  .nav-end{gap:var(--s4);margin-left:var(--s5);}
-  .drop{min-width:580px;}
+/* el riel se angosta antes que la barra: son dos ajustes independientes */
+@media (min-width:1024px) and (max-width:1320px){
   :root{--rail:140px;}
+}
+@media (min-width:1120px) and (max-width:1320px){
+  .menu{gap:var(--s5);}
+  .menu-b{font-size:10.5px;letter-spacing:.12em;}
+  .nav-end{gap:var(--s4);margin-left:var(--s5);}
 }
 
 @media (max-width:1023px){
-  /* sin riel, el rótulo vuelve a su filete horizontal */
-  .hero-say > .eyebrow::after{display:none;}
+  /* sin riel, la columna de código va arriba del titular */
+  .hero-code{font-size:10.5px;}
 }
 
 @media (max-width:899px){
