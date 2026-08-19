@@ -491,22 +491,34 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
 .shot-bg{position:absolute;inset:0;z-index:-2;}
 .shot-bg img{
   width:100%;height:100%;object-fit:cover;object-position:center right;display:block;
-  filter:grayscale(1) brightness(1.85) contrast(1.04)
-         sepia(.55) saturate(1.3) hue-rotate(-8deg);
+  /* Las fotos ya vienen en dorado sobre negro, casi la paleta del sitio: no
+     hace falta convertirlas a duotono. Solo se bajan de brillo para que el
+     texto mande, y se desatura el amarillo hacia el laton. Ojo: la version
+     anterior usaba brightness(1.85) porque las imagenes eran wireframes casi
+     negros; con una foto normal eso quema las altas luces. */
+  filter:brightness(.95) contrast(1.02) saturate(.88) hue-rotate(-4deg);
 }
 .shot::after{
   content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:
-    linear-gradient(90deg,var(--ink) 0%,rgba(11,11,10,.92) 28%,
-                    rgba(11,11,10,.24) 62%,rgba(11,11,10,.50) 100%),
-    linear-gradient(0deg,rgba(194,145,60,.07),rgba(194,145,60,.07));
+    /* placa opaca bajo la columna de texto, que se abre hacia el lado
+       donde vive el motivo de la foto */
+    linear-gradient(90deg,var(--ink) 0%,rgba(11,11,10,.97) 28%,
+                    rgba(11,11,10,.68) 48%,rgba(11,11,10,.06) 72%,
+                    rgba(11,11,10,.20) 100%),
+    /* vinetas arriba y abajo: las diagonales doradas de las fotos llegan
+       hasta el borde y chocaban con el filete que separa las secciones */
+    linear-gradient(180deg,rgba(11,11,10,.40) 0%,rgba(11,11,10,0) 22%,
+                    rgba(11,11,10,0) 78%,rgba(11,11,10,.40) 100%);
 }
 .shot-alt .shot-bg img{object-position:center left;}
 .shot-alt::after{
   background:
-    linear-gradient(270deg,var(--ink) 0%,rgba(11,11,10,.92) 28%,
-                    rgba(11,11,10,.24) 62%,rgba(11,11,10,.50) 100%),
-    linear-gradient(0deg,rgba(194,145,60,.07),rgba(194,145,60,.07));
+    linear-gradient(270deg,var(--ink) 0%,rgba(11,11,10,.97) 28%,
+                    rgba(11,11,10,.68) 48%,rgba(11,11,10,.06) 72%,
+                    rgba(11,11,10,.20) 100%),
+    linear-gradient(180deg,rgba(11,11,10,.40) 0%,rgba(11,11,10,0) 22%,
+                    rgba(11,11,10,0) 78%,rgba(11,11,10,.40) 100%);
 }
 .shot-in{position:relative;width:100%;}
 .shot-alt .shot-in{display:flex;flex-direction:column;align-items:flex-end;text-align:right;}
@@ -1293,14 +1305,21 @@ footer{
   }
   .shot-alt .shot-in{align-items:flex-start;text-align:left;}
   .shot-alt .sec-idx{flex-direction:row;}
-  /* en vertical, el encuadre lateral dejaba una franja angosta de la foto
-     y el resto vacio: centrado se ve la pieza entera */
+  /* En vertical la caja es tan angosta que solo entra un 30% del ancho de la
+     foto. Centrada, ese 30% caia en el vacio de las tres imagenes. Asi que la
+     composicion de celular es otra: banda de foto arriba, texto abajo sobre
+     placa. Y el recorte se elige a mano por seccion para que cada foto
+     muestre su motivo y no un hueco. */
+  .shot{align-items:flex-end;}
   .shot-bg img,.shot-alt .shot-bg img{object-position:center;}
+  #sitios-info  .shot-bg img{object-position:74% center;}  /* el laptop */
+  #apps-info    .shot-bg img{object-position:26% center;}  /* la pantalla de codigo */
+  #hosting-info .shot-bg img{object-position:66% center;}  /* el haz y la malla */
   .shot::after,.shot-alt::after{
     background:
-      linear-gradient(180deg,rgba(11,11,10,.52) 0%,rgba(11,11,10,.86) 48%,
-                      rgba(11,11,10,.95) 100%),
-      linear-gradient(0deg,rgba(194,145,60,.07),rgba(194,145,60,.07));
+      linear-gradient(180deg,rgba(11,11,10,.18) 0%,rgba(11,11,10,.28) 30%,
+                      rgba(11,11,10,.86) 52%,rgba(11,11,10,.95) 72%,
+                      rgba(11,11,10,.98) 100%);
   }
 }
 

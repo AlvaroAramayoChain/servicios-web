@@ -364,16 +364,41 @@ encima del 4,5:1 que pide WCAG AA. Si cambiás un color, medilo antes.
 
 ### Fotos
 
-Las tres imágenes de `assets/bg/` son wireframes casi negros. Pasan por un **duotono
-cálido** para que pertenezcan a la paleta en vez de pelearse con ella:
+Las tres imagenes de `assets/bg/` son fotografias oscuras con acento dorado, una
+por seccion. Vienen practicamente en la paleta del sitio, asi que **no se
+convierten a duotono**: solo se desatura un poco el amarillo hacia el laton.
 
 ```css
-filter: grayscale(1) brightness(1.85) contrast(1.04)
-        sepia(.55) saturate(1.3) hue-rotate(-8deg);
+filter: brightness(.95) contrast(1.02) saturate(.88) hue-rotate(-4deg);
 ```
 
-El `brightness` alto no es un capricho: sin él las piezas quedan invisibles. Si
-cambiás una imagen por una foto normal, bajá el brillo a `1` y subí el `grayscale`.
+**La legibilidad la da el escrito, no el filtro.** Es la regla importante de esta
+seccion: bajar el brillo de la foto para que el texto se lea apaga la foto entera
+y no hace falta. El `::after` de `.shot` lleva una placa casi opaca bajo la
+columna de texto que se abre hacia el lado donde vive el motivo, mas vinetas
+arriba y abajo para que las diagonales doradas no choquen con el filete que
+separa las secciones.
+
+Si reemplazas una imagen, mira de que lado esta el motivo y elegi la seccion en
+consecuencia: `.shot` lleva el texto a la izquierda y `.shot-alt` a la derecha.
+
+**En celular la composicion es otra.** La caja pasa a ser vertical y solo entra
+un 30% del ancho de la foto, asi que centrarla deja ver un vacio. Por eso ahi el
+texto baja al pie sobre una placa, la foto ocupa la banda de arriba, y el recorte
+se elige a mano por seccion:
+
+```css
+#sitios-info  .shot-bg img{object-position:74% center;}  /* el laptop */
+#apps-info    .shot-bg img{object-position:26% center;}  /* la pantalla de codigo */
+#hosting-info .shot-bg img{object-position:66% center;}  /* el haz y la malla */
+```
+
+**Formato y tamano.** WebP, al tamano nativo de la foto (hoy 1672x941, 16:9), por
+debajo de 300 KB cada una. Las actuales pesan unos 58 KB. Windows no trae
+codificador de WebP y el repo no usa herramientas externas: la conversion se hizo
+dibujando el PNG en un canvas de Chrome y exportando con
+`toDataURL('image/webp', .82)`. A ese tamano el resultado es indistinguible del
+PNG original de 1,2 MB.
 
 ### El riel al margen
 
