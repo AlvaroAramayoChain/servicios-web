@@ -1102,6 +1102,32 @@ footer{
 .foot-links a:hover::after{transform:scaleX(1);transform-origin:left;}
 .foot-legal{font-size:11.5px;max-width:66ch;line-height:1.65;font-weight:300;opacity:.8;}
 
+/* El pie cierra con dos datos de distinto peso: a la izquierda la letra chica
+   comercial, a la derecha quien esta detras de la marca. Misma estructura que
+   .foot-name (nombre + rol) pero un escalon mas abajo en tamano y color, para
+   que identifique sin competir con Desarrollo Cardon. */
+.foot-end{
+  display:grid;gap:var(--s5);
+  padding-top:var(--s5);border-top:1px solid var(--line);
+}
+.foot-by{
+  font-family:var(--serif);
+  font-size:14.5px;font-weight:400;letter-spacing:-.004em;line-height:1.35;
+  color:var(--bone-2);
+}
+.foot-by span{
+  display:block;font-family:var(--sans);font-weight:500;
+  font-size:9px;letter-spacing:.185em;text-transform:uppercase;
+  color:var(--bone-3);margin-top:7px;
+}
+@media (min-width:820px){
+  .foot-end{
+    grid-template-columns:minmax(0,1fr) auto;
+    column-gap:var(--s8);align-items:end;
+  }
+  .foot-by{text-align:right;white-space:nowrap;}
+}
+
 /* ---------- WHATSAPP FLOTANTE ---------- */
 .wafab{
   position:fixed;right:20px;bottom:20px;z-index:75;

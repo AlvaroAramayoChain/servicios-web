@@ -1,4 +1,4 @@
-# Catálogo de servicios web — Alvaro Aramayo Chain
+# Desarrollo Cardon — catálogo de servicios web
 
 Catálogo comercial de desarrollo web con **precios publicados** y cotizador en línea.
 No es un portfolio ni una página informativa: es la herramienta de venta. El visitante
@@ -291,6 +291,25 @@ La dirección se llama **ÍNDICE**. El negocio vende una sola cosa que nadie má
 ofrece —los precios están publicados— y el diseño existe para que eso se vea antes
 de leerlo: el sitio se compone como un índice de precios impreso, no como una
 landing. Todo lo que sigue sostiene esa idea.
+
+### La marca
+
+**Desarrollo Cardon** es la marca comercial; **Alvaro Aramayo Chain** es el
+desarrollador detrás. Esa jerarquía se sostiene en tres lugares y en ese orden:
+
+- El lockup de la nav y del pie: `Desarrollo Cardon` en serif + `Desarrollo web
+  a medida` en versalitas.
+- El pie cierra con el crédito del desarrollador (`.foot-by`), a la derecha de
+  la letra chica y un escalón más abajo en tamaño y color, para identificar sin
+  competir con la marca.
+- El JSON-LD declara la marca como `ProfessionalService` y a la persona como su
+  `founder`, que es como se modela esto en schema.org.
+
+Lo que **no** cambia con la marca: el dominio, el email y el enlace de GitHub
+siguen llevando `alvaroaramayochain`. Son alojamiento y contacto, no identidad;
+tocarlos rompería el sitio publicado. Si algún día hay dominio propio, ahí sí
+hay que actualizar `canonical`, `og:url`, `sitemap.xml`, el JSON-LD y el `<base>`
+de la 404.
 
 ### Tipografía
 
