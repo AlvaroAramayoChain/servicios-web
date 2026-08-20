@@ -492,6 +492,31 @@ así que ahí el encuadre se corre a `82% center` y el escrito se aclara.
 Ojo con la calidad al reconvertir: a q82 la trama de puntos del fondo desaparece.
 q92 la conserva y sigue pesando 14 KB, porque la imagen es casi plana.
 
+### Resolución de las fotos
+
+Las fotos van a sangre, así que el navegador las estira al ancho de la pantalla.
+En pantallas de alta densidad —cualquier notebook moderna, o Windows al 125/150%—
+una imagen de 1672px se agranda casi al doble y se ve blanda. Por eso las cuatro
+están a **3200×1800**, y cada una tiene además una versión de 1600px:
+
+```html
+srcset="assets/bg/sitios-1600.webp 1600w, assets/bg/sitios.webp 3200w"
+sizes="100vw"
+```
+
+El celular baja la chica (147 KB las cuatro) y el escritorio de alta densidad la
+grande (620 KB, y tres de las cuatro son `loading="lazy"`).
+
+**La calidad se eligió midiendo, no a ojo:** se generaron q72, q80, q88 y q94 y
+se comparó cuánto detalle fino conserva cada una contra el original. q88 conserva
+casi toda la mejora visible a 190 KB; q94 pesa 506 KB y el original 962 KB, y a
+tamaño real de pantalla son indistinguibles de q88.
+
+**Cuidado al reemplazar una foto:** un reescalado no sirve, aunque el archivo diga
+3200px. Ya pasó una vez: los archivos tenían el tamaño correcto pero eran el mismo
+original de 1672px agrandado, con 1,02× a 1,08× de detalle real. Hay que regenerar
+a resolución nativa o usar un escalador generativo.
+
 ### El riel al margen
 
 A partir de 1024 px los rótulos numerados (`01 — Sitios web`) **salen de la columna

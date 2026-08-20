@@ -2,3 +2,8 @@ node_modules/
 .DS_Store
 Thumbs.db
 README.md
+# Originales de las fotos de fondo, en su resolucion completa (~1 MB cada una).
+# Son el material maestro: de aca salen los WebP de assets/bg/. No se publican,
+# porque triplicarian el peso del repositorio y nadie los descarga desde el sitio.
+# Guardalos: sin ellos no se puede volver a generar con otra calidad.
+imagenes-seccion/
