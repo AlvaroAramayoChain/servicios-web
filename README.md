@@ -581,6 +581,16 @@ Los botones de WhatsApp llevan un atributo aparte, porque el mensaje va dentro d
 El `href` es el español (funciona aunque el JavaScript falle) y `data-wa-en` es el
 inglés, en texto plano: el navegador lo codifica solo.
 
+### El título y la descripción de cada página
+
+Se traducen como cualquier otro texto: la frase en español de **esa** página es
+la clave del diccionario. Si agregás una página nueva, sumá su `<title>` y su
+`meta description` al diccionario, o en inglés va a caer en el texto de respaldo
+de `@doc.title`.
+
+Antes esto usaba directamente la clave global `@doc.title` y las cinco páginas
+terminaban con el mismo título en inglés.
+
 ### Los números también cambian
 
 En español un precio se muestra `$200.000`. En inglés, `AR$200,000` — con coma de miles y
@@ -659,11 +669,32 @@ Si alguna vez hay que configurarlo de cero:
 
 - **Siempre rutas relativas.** `styles.css`, `assets/og-cover.jpg`, `catalogo.pdf`.
   Nunca con `/` al inicio: el sitio vive en `/servicios-web/`, no en la raíz.
+- **`404.html` es la única excepción, y lleva `<base href="/servicios-web/">`.**
+  Pages sirve esa página para *cualquier* ruta inexistente, pero la barra de
+  direcciones se queda en la ruta pedida. Sin el `<base>`, desde
+  `/precios/enlace-viejo` el navegador buscaba `/precios/styles.css` y la página
+  salía sin estilos, sin tipografía y con los enlaces apuntando mal. No le saques
+  el `<base>` ni le pongas rutas que empiecen con `/`.
 - Las URLs absolutas sólo van en las etiquetas que las exigen: `canonical`,
   `og:image`, `sitemap.xml` y el JSON-LD.
 - El archivo `.nojekyll` tiene que seguir ahí. Sin él, Pages procesa el sitio con
   Jekyll e ignora cualquier carpeta o archivo que empiece con guion bajo.
 - Nada de `localhost` en el código publicado.
+
+### Cómo probar la 404 en local
+
+El `<base>` apunta a `/servicios-web/`, así que si servís el repo desde su propia
+carpeta la 404 se ve sin estilos. Para probarla como se publica, serví **la
+carpeta de arriba** y entrá por la ruta completa:
+
+```bash
+cd ..                      # el directorio que contiene servicios-web/
+python -m http.server 8000
+# después abrí http://localhost:8000/servicios-web/404.html
+```
+
+El servidor de Python no sirve `404.html` en rutas inexistentes como sí hace
+Pages; para comprobar ese comportamiento hay que mirarlo publicado.
 
 ### Antes de cada publicación
 

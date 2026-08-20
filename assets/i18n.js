@@ -223,6 +223,25 @@ window.I18N_EN = {
 "Qué incluye el trabajo": "What the work includes",
 "Enlaces": "Links",
 "Idioma": "Language",
+
+/* --- titulos y descripciones, uno por pagina --- */
+"Desarrollo web y sistemas a medida en Salta | Alvaro Aramayo Chain": "Web development and custom systems in Salta | Alvaro Aramayo Chain",
+"Desarrollo de sitios web institucionales y sistemas a medida para comercios y empresas, con precios publicados. Salta, Argentina.": "Business websites and custom systems for shops and companies, with published prices. Salta, Argentina.",
+"Precios de páginas web y sistemas a medida 2026 | Alvaro Aramayo Chain": "Website and custom system prices 2026 | Alvaro Aramayo Chain",
+"Lista de precios publicada: sitios web desde $200.000, apps con sistema de tickets desde $650.000 y mantenimiento mensual desde $30.000. Con equivalencia en dólares.": "Published price list: websites from AR$200,000, apps with a ticket system from AR$650,000 and monthly maintenance from AR$30,000. With US dollar equivalents.",
+"Cotizador de sitios web y sistemas | Alvaro Aramayo Chain": "Website and system quote builder | Alvaro Aramayo Chain",
+"Armá tu presupuesto en línea: elegí una base, sumá los módulos que necesites y enviame el detalle por WhatsApp.": "Build your quote online: pick a base, add the modules you need, and send me the breakdown on WhatsApp.",
+"Preguntas frecuentes | Alvaro Aramayo Chain": "Frequently asked questions | Alvaro Aramayo Chain",
+"Plazos, correcciones incluidas, a nombre de quién quedan el dominio y el hosting, formas de pago y qué pasa si querés cambiar de proveedor.": "Timeframes, revisions included, whose name the domain and hosting are in, payment terms, and what happens if you want to switch providers.",
+"Proyectos realizados | Alvaro Aramayo Chain": "Completed projects | Alvaro Aramayo Chain",
+"Tres proyectos reales de desarrollo web: un sitio institucional con módulo de tickets, un catálogo de productos y una página de anticipo.": "Three real web development projects: a business site with a ticket module, a product catalogue, and a teaser page.",
+
+/* --- pagina 404 --- */
+"Esta página no existe | Alvaro Aramayo Chain": "This page does not exist | Alvaro Aramayo Chain",
+"El enlace que seguiste no existe o cambió de lugar. La lista de precios, el cotizador y los trabajos siguen disponibles.": "The link you followed does not exist or has moved. The price list, the quote builder and the work are all still available.",
+"Esta página no está en el catálogo.": "This page is not in the catalogue.",
+"Puede que el enlace esté viejo o que haya cambiado de lugar. La lista completa de precios y el cotizador siguen donde estaban.": "The link may be old, or the page may have moved. The full price list and the quote builder are still where they were.",
+"Volver al inicio": "Back to home",
 "@doc.title": "Web development and custom systems, prices published | Alvaro Aramayo Chain",
 "@doc.description": "Websites and custom systems with published prices: sites from AR$200,000, applications with a ticket system from AR$650,000, and monthly maintenance. Online quote builder. Salta, Argentina.",
 "@cot.pagos": "In 2 payments of {x}",
@@ -331,9 +350,20 @@ window.I18N_EN = {
       });
 
       document.documentElement.lang = cur;
-      document.title = en ? (dict['@doc.title'] || ES['@doc.title']) : ES['@doc.title'];
-      if (metaDesc) metaDesc.content = en ? (dict['@doc.description'] || ES['@doc.description'])
-                                          : ES['@doc.description'];
+
+      /* El titulo y la descripcion se traducen como cualquier otro texto: se
+         busca la frase en espanol de ESTA pagina dentro del diccionario. Antes
+         se usaba directo la clave global @doc.title, y por eso las cinco
+         paginas terminaban con el mismo titulo en ingles. La clave global
+         queda de respaldo para paginas sin entrada propia. */
+      document.title = en
+        ? (dict[norm(ES['@doc.title'])] || dict['@doc.title'] || ES['@doc.title'])
+        : ES['@doc.title'];
+      if (metaDesc) {
+        metaDesc.content = en
+          ? (dict[norm(ES['@doc.description'])] || dict['@doc.description'] || ES['@doc.description'])
+          : ES['@doc.description'];
+      }
 
       arias.forEach(function (o) {
         var cual = o.el.getAttribute('aria-label');

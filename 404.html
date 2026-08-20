@@ -4,22 +4,107 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0B0B0A">
+
+<!-- GitHub Pages sirve esta página para CUALQUIER ruta que no exista, pero la
+     barra de direcciones se queda en la ruta pedida. Sin este <base>, desde
+     /precios/enlace-viejo el navegador buscaba /precios/styles.css y la página
+     salía sin estilos, sin tipografía y con los enlaces apuntando mal.
+     Con el <base> todo se resuelve contra la raíz del sitio, a cualquier
+     profundidad. Ojo al previsualizar en local: hay que servir el repo bajo
+     /servicios-web/ para que esta ruta coincida. -->
+<base href="/servicios-web/">
+
 <title>Esta página no existe | Alvaro Aramayo Chain</title>
+<meta name="description" content="El enlace que seguiste no existe o cambió de lugar. La lista de precios, el cotizador y los trabajos siguen disponibles.">
 <meta name="robots" content="noindex">
+
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
 <link rel="preload" href="assets/fonts/jost-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
+
+<script>
+  /* Igual que en el resto del sitio: marca que hay JS antes del primer
+     pintado, con red de seguridad por tiempo. */
+  document.documentElement.className = 'js';
+  setTimeout(function () {
+    var h = document.documentElement;
+    if (!h.classList.contains('reveal-ready')) h.classList.add('motion-off');
+  }, 2500);
+</script>
 </head>
 <body>
-<main class="oops">
-  <p class="code">Error 404</p>
-  <h1 class="display-2">Esta página no está en el catálogo.</h1>
-  <p>Puede que el enlace esté viejo o que haya cambiado de lugar. La lista completa de precios y el cotizador siguen donde estaban.</p>
-  <div class="close-actions">
-    <a class="btn btn-gold" href="./">Volver al catálogo</a>
-    <a class="btn btn-line" href="https://wa.me/543874832897?text=Hola%21%20Quiero%20consultar%20por%20un%20sitio%20web" target="_blank" rel="noopener">Escribirme por WhatsApp</a>
+
+<div class="rule-top" aria-hidden="true"><span id="progressBar"></span></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="./">
+      <span class="brand-mark" aria-hidden="true"></span>
+      Alvaro Aramayo <span class="brand-thin">Desarrollo web</span>
+    </a>
+
+    <button type="button" class="nav-toggle" id="navToggle"
+            aria-expanded="false" aria-controls="menuPrincipal" aria-label="Menú">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+
+    <nav class="menu" id="menuPrincipal" aria-label="Navegación principal">
+      <a class="menu-b menu-link" href="./">Inicio</a>
+      <a class="menu-b menu-link" href="precios/">Precios</a>
+      <a class="menu-b menu-link" href="cotizador/">Cotizador</a>
+      <a class="menu-b menu-link" href="trabajos/">Trabajos</a>
+      <a class="menu-b menu-link" href="preguntas/">Preguntas</a>
+      <a class="menu-b menu-link" href="https://alvaroaramayochain.github.io/" target="_blank" rel="noopener">Portfolio</a>
+    </nav>
+
+    <div class="nav-end">
+      <div class="lang" role="group" aria-label="Idioma">
+        <button type="button" class="lang-b" data-lang="es" lang="es">ES</button>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <button type="button" class="lang-b" data-lang="en" lang="en">EN</button>
+      </div>
+      <a class="btn btn-solid btn-sm" href="cotizador/">Cotizar</a>
+    </div>
   </div>
+</header>
+
+<main id="contenido">
+<section class="oops">
+  <div class="wrap oops-in">
+    <p class="code">Error 404</p>
+    <h1 class="display">Esta página no está en el catálogo.</h1>
+    <p class="oops-note">Puede que el enlace esté viejo o que haya cambiado de lugar. La lista completa de precios y el cotizador siguen donde estaban.</p>
+    <div class="close-actions">
+      <a class="btn btn-gold" href="precios/">Ver la lista de precios</a>
+      <a class="btn btn-line" href="./">Volver al inicio</a>
+      <a class="btn btn-line" href="https://wa.me/543874832897?text=Hola%21%20Quiero%20consultar%20por%20un%20sitio%20web" target="_blank" rel="noopener" data-wa-en="Hi! I'd like to enquire about a website">Escribirme por WhatsApp</a>
+    </div>
+  </div>
+</section>
 </main>
+
+<footer>
+  <div class="wrap foot-in">
+    <p class="foot-name">Alvaro Aramayo Chain<span>Desarrollo web en Salta, Argentina</span></p>
+    <nav class="foot-links" aria-label="Enlaces">
+      <a href="./">Inicio</a>
+      <a href="precios/">Precios</a>
+      <a href="cotizador/">Cotizador</a>
+      <a href="trabajos/">Trabajos</a>
+      <a href="preguntas/">Preguntas</a>
+      <a href="https://alvaroaramayochain.github.io/" target="_blank" rel="noopener">Portfolio</a>
+      <a href="https://github.com/AlvaroAramayoChain" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:alvaroaramayochain123@gmail.com">Email</a>
+      <a href="catalogo.pdf" target="_blank" rel="noopener">Catálogo PDF</a>
+    </nav>
+    <p class="foot-legal">Precios en pesos argentinos, sujetos a variación cambiaria y al alcance final de cada proyecto. Última actualización de la lista: agosto de 2026.</p>
+  </div>
+</footer>
+
+<script src="assets/i18n.js"></script>
+<script src="script.js" defer></script>
 </body>
 </html>

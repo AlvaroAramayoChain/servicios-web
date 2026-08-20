@@ -1134,20 +1134,28 @@ footer{
   .wafab:hover span,.wafab:focus-visible span{max-width:118px;margin-left:11px;padding-right:5px;}
 }
 
-/* ---------- PÁGINA 404 ---------- */
+/* ---------- PÁGINA 404 ----------
+   Lleva la misma nav y el mismo pie que el resto del sitio: es la pagina que
+   ve alguien que llego con un enlace roto, y dejarla huerfana era regalar la
+   unica impresion que le queda. */
 .oops{
-  min-height:82vh;display:grid;align-content:center;
-  padding:var(--s9) var(--pad);max-width:var(--maxw);margin:0 auto;
+  display:flex;align-items:center;
+  min-height:clamp(400px,58vh,620px);
+  padding:clamp(64px,9vw,116px) 0;
 }
+.oops-in{width:100%;}
 .oops .code{
   font-family:var(--sans);
   font-size:10.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--brass-hi);margin-bottom:var(--s4);
-  display:flex;align-items:center;gap:14px;
+  color:var(--brass-hi);margin-bottom:var(--s5);
+  display:flex;align-items:center;gap:15px;
 }
 .oops .code::after{content:"";width:54px;height:2px;background:var(--brass);}
-.oops h1{max-width:16ch;}
-.oops p{margin-top:var(--s5);color:var(--bone-2);font-size:17px;font-weight:300;max-width:48ch;line-height:1.66;}
+.oops .display{max-width:15ch;}
+.oops-note{
+  margin-top:var(--s5);color:var(--bone-2);
+  font-size:17px;font-weight:300;max-width:52ch;line-height:1.66;
+}
 .oops .close-actions{margin-top:var(--s7);}
 
 /* ===========================================================
