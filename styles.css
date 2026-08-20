@@ -210,13 +210,18 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
   font-size:17.5px;font-weight:400;letter-spacing:-.005em;color:var(--bone);
   white-space:nowrap;
 }
-/* la marca: un bloque de latón con una muesca. Señalador de índice */
+/* La marca es el cardón: un archivo SVG, no una forma dibujada en CSS.
+   Va la variante sólida del kit y no el isotipo completo, porque el isotipo
+   tiene trazo fino y un </> en la base que a este tamaño se vuelven ruido;
+   el propio manual pide 48px mínimos para esa versión.
+   El amarillo del logo se respeta tal cual: es la marca, y la paleta del
+   sitio no se toca. Por eso el hover no le cambia el color, sólo lo levanta
+   apenas, que es lo que se puede hacer sin adulterar el gradiente. */
 .brand-mark{
-  width:9px;height:20px;background:var(--brass);flex:none;
-  clip-path:polygon(0 0,100% 0,100% 100%,50% 74%,0 100%);
-  transition:background var(--t-mid);
+  width:28px;height:28px;flex:none;display:block;
+  transition:transform var(--t-mid) var(--ease),filter var(--t-mid);
 }
-.brand:hover .brand-mark{background:var(--brass-hi);}
+.brand:hover .brand-mark{filter:brightness(1.08);transform:translateY(-1px);}
 .brand-thin{
   font-family:var(--sans);font-weight:500;
   font-size:9.5px;letter-spacing:.185em;text-transform:uppercase;
@@ -1417,13 +1422,15 @@ footer{
    aprieta el lockup y se achica el boton. Todo sigue accesible. */
 @media (max-width:360px){
   .nav-inner{padding-left:10px;padding-right:10px;gap:5px;}
-  .brand{font-size:13.5px;gap:6px;}
-  .brand-mark{width:6px;height:15px;}
-  .nav-end{gap:7px;margin-left:auto;}
+  /* el cardon ocupa mas ancho que la forma que habia antes, asi que a 320
+     hay que recuperar esos pixeles del resto de la barra */
+  .brand{font-size:12.5px;gap:5px;}
+  .brand-mark{width:18px;height:18px;}
+  .nav-end{gap:6px;margin-left:auto;}
   .lang{gap:3px;}
-  .lang-b{font-size:9.5px;letter-spacing:.05em;padding:5px 0;}
-  .lang-sep{font-size:9px;}
-  .nav-end .btn-sm{padding:8px 9px;font-size:9px;letter-spacing:.07em;}
+  .lang-b{font-size:9px;letter-spacing:.04em;padding:5px 0;}
+  .lang-sep{font-size:8.5px;}
+  .nav-end .btn-sm{padding:7px 8px;font-size:8.5px;letter-spacing:.05em;}
   .nav-toggle{width:26px;margin-left:0;}
   .nav-toggle span{left:2px;width:20px;}
 }

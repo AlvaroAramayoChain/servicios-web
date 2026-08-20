@@ -311,6 +311,32 @@ tocarlos rompería el sitio publicado. Si algún día hay dominio propio, ahí s
 hay que actualizar `canonical`, `og:url`, `sitemap.xml`, el JSON-LD y el `<base>`
 de la 404.
 
+### El logo
+
+El isotipo es un cardón, el cactus columnar de Salta. Los originales viven en
+`logo/`, con su propio `USO.md`: ese es el kit de marca completo y no lo toca el
+sitio. Lo que el sitio usa se copia a `assets/`:
+
+| Archivo | Dónde |
+|---|---|
+| `assets/logo.svg` | la marca de la nav **y** el icono de pestaña en SVG |
+| `assets/favicon.ico` · `favicon-32.png` · `favicon-16.png` | pestaña, respaldos |
+| `assets/apple-touch-icon.png` | pantalla de inicio en iOS |
+
+Dos cosas que hay que respetar si lo cambiás:
+
+- **En la nav va `cardon-favicon.svg`, la variante sólida, no el isotipo
+  completo.** El isotipo tiene trazo fino y un `</>` en la base que a 28px se
+  vuelven ruido; el manual pide 48px mínimos para esa versión. Se comprobó: a
+  34px ya no se lee.
+- **El amarillo del logo se deja intacto.** Es la marca, y va en su color aunque
+  la interfaz use latón: son la misma familia y el logo queda como el punto más
+  vivo de la pantalla. Desaturarlo hacia el latón lo apaga y no mejora nada. Por
+  eso el hover no le cambia el color, sólo lo levanta un pixel.
+
+El cardón ocupa más ancho que la forma que había antes, así que a 320px hubo que
+recuperar esos píxeles del resto de la barra. Si lo agrandás, revisá ese ancho.
+
 ### Tipografía
 
 **Dos familias para el contenido, y el contraste entre ellas es la identidad.** Los titulares van en
