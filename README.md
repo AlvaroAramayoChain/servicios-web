@@ -851,6 +851,11 @@ Pages; para comprobar ese comportamiento hay que mirarlo publicado.
 - [ ] Que ninguna sección quede sin su línea de cota trazada al hacer scroll.
 
 ---
+- [ ] Si tocaste un `<head>`: el fragmento de Umami tiene que quedar idéntico en
+      las cinco páginas y `data-website-id` aparecer exactamente 5 veces.
+- [ ] Si agregaste un enlace a `wa.me`: marcalo con `data-umami-event="whatsapp"`,
+      salvo que sea un botón de envío del presupuesto, que va con
+      `presupuesto-wa`. Nunca los dos en el mismo elemento.
 
 ## Cómo hacer cambios futuros
 
