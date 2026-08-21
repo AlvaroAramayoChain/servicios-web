@@ -27,7 +27,7 @@
   };
 
   /* En inglés los miles se separan con coma y el peso se aclara como AR$:
-     "$200.000" leído por un angloparlante son doscientos dólares. */
+     "$120.000" leído por un angloparlante son ciento veinte dólares. */
   function money(n) {
     var v = Math.round(n);
     return I18N.lang === 'en'
