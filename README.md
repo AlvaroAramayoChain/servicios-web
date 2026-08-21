@@ -281,7 +281,7 @@ python3 -c "from urllib.parse import quote; print(quote('Hola! Me interesa el pl
 
 ### El email
 
-Aparece en el cierre, en el pie y en el JSON-LD. Buscá `alvaroaramayochain123@gmail.com`.
+Aparece en el cierre, en el pie y en el JSON-LD. Buscá `contacto@desarrollocardon.com`.
 
 ---
 
