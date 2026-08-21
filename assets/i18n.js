@@ -315,10 +315,23 @@ window.I18N_EN = {
     var arias = [].map.call(document.querySelectorAll('[aria-label]'), function (el) {
       return { el: el, es: el.getAttribute('aria-label') };
     });
-    var waLinks = [].map.call(document.querySelectorAll('a[data-wa-en]'), function (el) {
-      return { el: el, es: el.getAttribute('href'),
-               base: el.getAttribute('href').split('?')[0],
-               en: el.getAttribute('data-wa-en') };
+    /* Enlaces que llevan un mensaje escrito dentro del propio href. Cada
+       destino usa su parametro: WhatsApp arma el texto con ?text= y un correo
+       arma el asunto con ?subject=. Por eso el parametro sale del atributo y
+       no esta cableado: con ?text= en un mailto, ningun cliente de correo
+       entiende el asunto. */
+    var CON_MENSAJE = [
+      { attr: 'data-wa-en',   param: 'text' },
+      { attr: 'data-mail-en', param: 'subject' }
+    ];
+    var waLinks = [];
+    CON_MENSAJE.forEach(function (tipo) {
+      [].forEach.call(document.querySelectorAll('a[' + tipo.attr + ']'), function (el) {
+        waLinks.push({ el: el, es: el.getAttribute('href'),
+                       base: el.getAttribute('href').split('?')[0],
+                       param: tipo.param,
+                       en: el.getAttribute(tipo.attr) });
+      });
     });
 
     var cur = pick();
@@ -363,7 +376,7 @@ window.I18N_EN = {
         if (v != null) o.el.setAttribute('aria-label', v);
       });
       waLinks.forEach(function (o) {
-        o.el.href = en ? o.base + '?text=' + encodeURIComponent(o.en) : o.es;
+        o.el.href = en ? o.base + '?' + o.param + '=' + encodeURIComponent(o.en) : o.es;
       });
 
       [].forEach.call(document.querySelectorAll('.lang-b'), function (b) {
