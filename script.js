@@ -425,16 +425,97 @@
   var ticking  = false;
   var fabFrom  = 400;
 
+  /* --- movimiento ligado al scroll ---------------------------------------
+     Dos gestos nuevos, los dos dentro del rAF que ya existía: no se agrega
+     otro listener de scroll ni otro requestAnimationFrame.
+
+     1. Las secciones a pantalla completa mueven su fondo más lento que el
+        texto. Recorrido corto: es profundidad, no un efecto.
+     2. La cabecera se retrasa y se apaga al salir: el hero en la portada,
+        el encabezado de sección en las páginas internas. La imagen nunca
+        escala, que es lo que delata el truco.
+
+     Las posiciones se miden UNA vez y se recalculan al redimensionar. Dentro
+     del cuadro sólo hay aritmética y escrituras de transform y opacity: ni
+     una lectura de layout, que es lo que encadena reflows. */
+  var capas  = [];
+  var salida = [];
+  var VIAJE   = 0.05;               // recorrido del parallax, del alto de la sección
+  var RETRASO = 0.16;               // cuánto se queda atrás la cabecera
+  var APAGADO = 1.25;               // margen del apagado sobre el alto propio
+
+  function desplazamiento(el) {
+    var y = 0;
+    while (el) { y += el.offsetTop; el = el.offsetParent; }
+    return y;
+  }
+
+  function medirMovimiento() {
+    capas = $$('.shot').map(function (s) {
+      var bg = $('.shot-bg', s);
+      if (!bg) return null;
+      var alto = s.offsetHeight;
+      /* el recorrido va en proporción al alto: el margen que le dimos a la
+         caja del fondo es del 7%, así que con 5% nunca se ve el borde */
+      return { bg: bg, top: desplazamiento(s), alto: alto, viaje: alto * VIAJE };
+    }).filter(Boolean);
+
+    /* la portada tiene hero; /precios/ un .page-head; las otras tres abren
+       con el encabezado de la primera banda. Los tres son la misma pieza. */
+    salida = $$('.hero-in, .page-head .wrap, .band-first .sec').map(function (el) {
+      var alto = el.offsetHeight || 1;
+      /* Como la pieza se arrastra hacia abajo, sale de cuadro más tarde que su
+         propio alto. Si el apagado terminara en `alto` quedaría invisible con
+         parte todavía a la vista, que es exactamente lo que no se quiere.
+         El piso de 300px evita que en las cabeceras bajas el gesto sea un
+         parpadeo. */
+      return { el: el, top: desplazamiento(el), alto: alto,
+               apaga: Math.max(alto, 300) * APAGADO };
+    });
+  }
+
+  function moverConScroll(y, alto) {
+    var i, c;
+    /* cabeceras: se retrasan y se apagan a medida que suben */
+    for (i = 0; i < salida.length; i++) {
+      c = salida[i];
+      var d = y - c.top;
+      if (d > 0) {
+        var arrastre = Math.min(d, c.alto) * RETRASO;
+        c.el.style.transform = 'translate3d(0,' + arrastre.toFixed(1) + 'px,0)';
+        c.el.style.opacity   = Math.max(0, 1 - d / c.apaga).toFixed(3);
+      } else if (c.el.style.transform) {
+        c.el.style.transform = '';
+        c.el.style.opacity   = '';
+      }
+    }
+    /* parallax: el fondo recorre menos que la sección que lo contiene */
+    for (i = 0; i < capas.length; i++) {
+      c = capas[i];
+      var centro = c.top + c.alto / 2 - y;         // centro visto desde arriba
+      /* q vale 1 con la sección entrando por abajo y -1 saliendo por arriba.
+         El medio recorrido es (alto + c.alto) / 2: con cualquier otra cota q
+         se pasa de 1 y el fondo descubre su borde. */
+      var q = (centro - alto / 2) / ((alto + c.alto) / 2);
+      if (q > 1) { q = 1; } else if (q < -1) { continue; }
+      c.bg.style.transform = 'translate3d(0,' + (q * c.viaje).toFixed(1) + 'px,0)';
+    }
+  }
+
   function measure() {
     fabFrom = hero ? Math.max(hero.offsetHeight * 0.7, 320) : 400;
+    if (!REDUCE) medirMovimiento();
   }
 
   function onScroll() {
-    var y   = window.scrollY || document.documentElement.scrollTop;
-    var max = document.documentElement.scrollHeight - window.innerHeight;
-    if (bar) bar.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+    var y    = window.scrollY || document.documentElement.scrollTop;
+    var alto = window.innerHeight;
+    var max  = document.documentElement.scrollHeight - alto;
+    /* escala en lugar de ancho: cambiar width recalcula layout en cada cuadro */
+    if (bar) bar.style.transform = 'scaleX(' + (max > 0 ? y / max : 0).toFixed(4) + ')';
     if (nav) nav.classList.toggle('is-stuck', y > 8);
     if (fab) fab.classList.toggle('on', y > fabFrom);
+    if (!REDUCE) moverConScroll(y, alto);
     ticking = false;
   }
 

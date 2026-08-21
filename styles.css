@@ -179,7 +179,12 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
 /* ---------- HILO DE PROGRESO ----------
    2px de latón arriba. Información de posición, no adorno. */
 .rule-top{position:fixed;inset:0 0 auto;height:2px;z-index:90;pointer-events:none;}
-.rule-top span{display:block;height:100%;width:0;background:var(--brass);}
+/* la barra avanza con scaleX y no con width: cambiar el ancho recalcula
+   layout en cada cuadro del scroll, escalar no */
+.rule-top span{
+  display:block;height:100%;width:100%;background:var(--brass);
+  transform:scaleX(0);transform-origin:left center;will-change:transform;
+}
 
 /* ===========================================================
    NAV
@@ -523,7 +528,11 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
   border-top:1px solid var(--line);
   overflow:hidden;
 }
-.shot-bg{position:absolute;inset:0;z-index:-2;}
+/* La caja del fondo es mas alta que la seccion: el parallax la mueve 46px
+   para cada lado y sin ese margen se descubriria el borde de la imagen.
+   7% de una seccion de 720px son 50px, o sea que el recorrido entra justo. */
+.shot-bg{position:absolute;left:0;right:0;top:-7%;height:114%;z-index:-2;}
+.shot-bg,.hero-in,.page-head .wrap,.band-first .sec{will-change:transform;}
 .shot-bg img{
   width:100%;height:100%;object-fit:cover;object-position:center right;display:block;
   /* Las fotos ya vienen en dorado sobre negro, casi la paleta del sitio: no
@@ -1325,6 +1334,12 @@ footer{
   clip-path:inset(0 calc(100% - 76px) 0 0) !important;
 }
 .motion-off .band::after,.motion-off .close::after,.motion-off .page-head::after{opacity:1 !important;}
+/* los gestos ligados al scroll: no ocultan nada por si solos, pero si el JS
+   queda a medio camino tienen que volver al estado final igual que el resto */
+.motion-off .shot-bg,.motion-off .hero-in,
+.motion-off .page-head .wrap,.motion-off .band-first .sec{
+  transform:none !important;opacity:1 !important;
+}
 
 /* ---------- FOCO ---------- */
 :focus-visible{outline:2px solid var(--brass-hi);outline-offset:3px;border-radius:var(--r);}
@@ -1346,6 +1361,10 @@ footer{
     clip-path:inset(0 calc(100% - 76px) 0 0) !important;
   }
   .band::after,.close::after,.page-head::after{opacity:1 !important;}
+  .shot-bg,.hero-in,.page-head .wrap,.band-first .sec{
+    transform:none !important;opacity:1 !important;
+  }
+  .rule-top span{transform:scaleX(0) !important;}
 }
 
 /* ===========================================================
