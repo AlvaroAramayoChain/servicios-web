@@ -281,7 +281,23 @@ python3 -c "from urllib.parse import quote; print(quote('Hola! Me interesa el pl
 
 ### El email
 
-Aparece en el cierre, en el pie y en el JSON-LD. Buscá `contacto@desarrollocardon.com`.
+`contacto@desarrollocardon.com`, en el cierre, en el pie y en el JSON-LD de
+`index.html`. Son 11 enlaces, todos con el mismo asunto ya escrito:
+
+```html
+<a href="mailto:contacto@desarrollocardon.com?subject=Consulta%20por%20servicios%20web"
+   data-mail-en="Enquiry about web services">Email</a>
+```
+
+Igual que en WhatsApp, el `href` es el español y funciona aunque el JavaScript
+falle; `data-mail-en` es el asunto que se pone al cambiar a inglés.
+
+**Ojo con el parámetro.** WhatsApp arma el mensaje con `?text=` y un correo arma
+el asunto con `?subject=`. `i18n.js` lo saca del atributo justamente por eso: si
+estuviera cableado a `?text=`, el `mailto` quedaría con un parámetro que ningún
+cliente de correo interpreta y el asunto se perdería. Si algún día se suma otro
+destino que meta un mensaje en el href, se agrega al arreglo `CON_MENSAJE` con su
+propio parámetro.
 
 ---
 
