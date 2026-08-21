@@ -651,6 +651,26 @@ Los botones de WhatsApp llevan un atributo aparte, porque el mensaje va dentro d
 El `href` es el español (funciona aunque el JavaScript falle) y `data-wa-en` es el
 inglés, en texto plano: el navegador lo codifica solo.
 
+### Cómo se audita el diccionario
+
+Tres cosas tienen que dar cero, y conviene revisarlas cada vez que se toca un
+texto:
+
+1. **Frases del HTML sin clave.** Las únicas que pueden quedar sin clave son
+   nombres propios, marcas, tecnologías y números: `Desarrollo Cardón`, `Python`,
+   `WhatsApp`, `ARS`, `Error 404`, los marcadores `A` `B` `C` del cotizador.
+2. **Claves huérfanas**, que quedaron en el diccionario pero ya no están en el
+   HTML. Hay una sola a propósito: la del `<noscript>` del cotizador, que i18n
+   saltea porque sin JavaScript tampoco corre la traducción.
+3. **Traducciones al inglés repetidas.** Dos frases distintas en español no
+   pueden compartir traducción: el diccionario inverso, el que devuelve al
+   español, dejaría de ser unívoco.
+
+**Al auditar, hay que recorrer el DOM como lo recorre `i18n.js`**, no con
+expresiones regulares sobre el HTML. En particular hay que volver a unir los
+titulares que `script.js` parte en líneas para la animación de máscara; si no,
+aparecen fragmentos sueltos como frases faltantes.
+
 ### El título y la descripción de cada página
 
 Se traducen como cualquier otro texto: la frase en español de **esa** página es
@@ -739,12 +759,14 @@ Si alguna vez hay que configurarlo de cero:
 
 - **Siempre rutas relativas.** `styles.css`, `assets/og-cover.jpg`, `catalogo.pdf`.
   Nunca con `/` al inicio: el sitio vive en `/servicios-web/`, no en la raíz.
-- **`404.html` es la única excepción, y lleva `<base href="/servicios-web/">`.**
+- **`404.html` es la única excepción, y lleva `<base href="/">`.**
   Pages sirve esa página para *cualquier* ruta inexistente, pero la barra de
   direcciones se queda en la ruta pedida. Sin el `<base>`, desde
   `/precios/enlace-viejo` el navegador buscaba `/precios/styles.css` y la página
   salía sin estilos, sin tipografía y con los enlaces apuntando mal. No le saques
-  el `<base>` ni le pongas rutas que empiecen con `/`.
+  el `<base>`. **Si algún día cambia dónde vive el sitio, esta línea cambia con
+  él:** valía `/servicios-web/` mientras estaba en GitHub Pages y pasó a `/` al
+  mudarse a dominio propio.
 - Las URLs absolutas sólo van en las etiquetas que las exigen: `canonical`,
   `og:image`, `sitemap.xml` y el JSON-LD.
 - El archivo `.nojekyll` tiene que seguir ahí. Sin él, Pages procesa el sitio con
