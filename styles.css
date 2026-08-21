@@ -1039,6 +1039,41 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
 }
 .row dd .usd{text-align:right;}
 
+/* ---------- ALCANCE Y CONDICIONES ----------
+   Reusa .split, .ticks y .rows, que ya existen. Lo unico propio es el rotulo
+   de cada columna y la marca de la lista de exclusiones: una cruz de filete,
+   del mismo grosor que la tilde, para que se lean como pares y no como dos
+   componentes distintos. Sin filetes verticales: las columnas las separa el
+   aire del grid. */
+.cond-cap{
+  font-family:var(--sans);
+  font-size:10.5px;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--brass-hi);margin-bottom:var(--s5);
+  padding-bottom:var(--s3);border-bottom:1px solid var(--line-2);
+}
+.cond-split{margin-bottom:clamp(48px,6vw,80px);}
+@media (min-width:960px){.cond-split{grid-template-columns:1fr 1fr;}}
+.ticks-no li::before{
+  /* signo de suma, no tilde: mismo peso de trazo y distinto significado.
+     La tilde dice "viene incluido"; el mas dice "se suma aparte", que es
+     justo lo que son estos items. Una cruz habria dicho "no se puede". */
+  border:0;width:9px;height:9px;top:6px;transform:none;
+  background:
+    linear-gradient(var(--bone-3),var(--bone-3)) center/9px 1.5px no-repeat,
+    linear-gradient(var(--bone-3),var(--bone-3)) center/1.5px 9px no-repeat;
+}
+.ticks-no li{color:var(--bone-3);}
+.cond-rows .row{align-items:start;}
+.cond-rows .row-txt{
+  font-family:var(--sans);
+  font-size:14px;font-weight:300;line-height:1.6;color:var(--bone-2);
+  text-align:right;max-width:46ch;white-space:normal;letter-spacing:0;
+}
+@media (max-width:600px){
+  .cond-rows .row-txt{text-align:left;}
+}
+
 /* ===========================================================
    PREGUNTAS
    Mismo mecanismo que el índice de precios, en tono menor.
