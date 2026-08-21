@@ -667,6 +667,41 @@ Los botones de WhatsApp llevan un atributo aparte, porque el mensaje va dentro d
 El `href` es el español (funciona aunque el JavaScript falle) y `data-wa-en` es el
 inglés, en texto plano: el navegador lo codifica solo.
 
+### Analítica
+
+Umami, con `defer`, antes de `</head>` en las cinco páginas. Es el único script
+externo del repositorio y no bloquea la primera pintada: suma **0,4 KB** a lo
+que descarga el navegador antes de dibujar, más 2,4 KB del script diferido.
+
+**No hace falta cartel de consentimiento**, y eso está medido, no supuesto:
+cargando la misma página con y sin el script, el `localStorage` queda igual —una
+sola entrada, `aac-rate`, que es la caché del dólar del propio sitio— y las
+cookies quedan vacías en los dos casos.
+
+Tres eventos, todos con atributos en el HTML, sin JavaScript nuevo:
+
+| Evento | Dónde |
+|---|---|
+| `presupuesto-wa` | `#qSend` y `#qBarSend` del cotizador. **Es la conversión** |
+| `whatsapp` | el resto de los enlaces a `wa.me` |
+| `catalogo-pdf` | las descargas del catálogo |
+
+**Dos cosas que no hay que romper.**
+
+Primero: **Umami admite un solo evento por elemento.** Los dos botones de
+presupuesto son enlaces a `wa.me`, así que si alguna vez se marcan en bloque
+"todos los `wa.me` como `whatsapp`" se pisa la conversión y queda mezclada con
+los clics sueltos. Se marcan primero por id y el patrón genérico saltea lo ya
+marcado.
+
+Segundo: **el atributo va en el HTML a propósito.** `script.js` reescribe el
+`href` de esos botones en cada `render()` pero no recrea los elementos, así que
+el atributo sobrevive. Instrumentarlo desde el JavaScript abriría la puerta a
+disparar dos veces la métrica que más importa.
+
+Si Umami no carga —bloqueador, red caída— no pasa nada: no hay código propio que
+dependa de él.
+
 ### Cómo se audita el diccionario
 
 Tres cosas tienen que dar cero, y conviene revisarlas cada vez que se toca un
