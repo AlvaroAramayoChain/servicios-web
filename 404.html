@@ -10,9 +10,9 @@
      /precios/enlace-viejo el navegador buscaba /precios/styles.css y la página
      salía sin estilos, sin tipografía y con los enlaces apuntando mal.
      Con el <base> todo se resuelve contra la raíz del sitio, a cualquier
-     profundidad. Ojo al previsualizar en local: hay que servir el repo bajo
-     /servicios-web/ para que esta ruta coincida. -->
-<base href="/servicios-web/">
+     profundidad. Ahora el sitio vive en la raíz del dominio, así que la base
+     es "/". Al previsualizar en local, servir el repo desde su propia raíz. -->
+<base href="/">
 
 <title>Esta página no existe | Desarrollo Cardon</title>
 <meta name="description" content="El enlace que seguiste no existe o cambió de lugar. La lista de precios, el cotizador y los trabajos siguen disponibles.">
