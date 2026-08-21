@@ -591,7 +591,11 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
   .page-head .eyebrow{
     grid-column:1;grid-row:1;
     display:block;margin:0;padding-top:.9em;
-    font-size:10px;line-height:1.95;letter-spacing:.115em;
+    /* mismo escalón que .sec-idx: en /precios/ este rótulo cumple el papel
+       del índice de sección, así que si uno sube, sube el otro o la portada
+       y las internas dejan de leerse como el mismo sistema */
+    font-size:clamp(11.5px,11px + .16vw,13px);
+    line-height:1.8;letter-spacing:.115em;
   }
   .page-head .eyebrow::after{
     content:"";display:block;width:28px;height:2px;background:var(--brass);margin-top:14px;
@@ -618,8 +622,19 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
 .sec-note{margin-top:var(--s5);color:var(--bone-2);font-size:16px;font-weight:300;line-height:1.66;}
 .sec-cta{margin-top:var(--s6);}
 
-/* rótulo con un tramo de filete que lo cierra */
-.sec-idx{display:flex;align-items:center;gap:14px;margin-bottom:var(--s4);}
+/* rótulo con un tramo de filete que lo cierra.
+   Sube un escalón sobre el resto de los rótulos, que comparten la regla de
+   arriba y quedan como estaban: el índice de sección abre cada bloque y tenía
+   el mismo peso visual que una etiqueta suelta. El interletrado baja de ,18 a
+   ,155 em porque en versalitas, cuanto más grande el cuerpo, menos separación
+   necesita para leerse. El número y el texto son un solo nodo, así que su
+   relación óptica se mantiene sola. No se toca ningún margen: las cotas de
+   sección miden con --pad y seguirían alineadas igual. */
+.sec-idx{
+  display:flex;align-items:center;gap:14px;margin-bottom:var(--s4);
+  font-size:clamp(11.5px,11px + .16vw,13px);
+  letter-spacing:.155em;
+}
 .sec-idx::after{content:"";flex:1;max-width:110px;height:1px;background:var(--line-2);}
 
 @media (min-width:1024px){
