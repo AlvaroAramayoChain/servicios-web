@@ -258,7 +258,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
 }
 .lang-b:hover{color:var(--bone);}
 .lang-b.on{color:var(--bone);border-bottom-color:var(--brass);}
-.lang-sep{color:var(--line-3);font-size:10px;}
+.lang-sep{color:var(--bone-3);font-size:10px;}
 
 /* ===========================================================
    MENÚ PRINCIPAL
@@ -722,7 +722,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
 .plan-bar[aria-expanded="true"]{padding-left:var(--s4);background:rgba(244,239,230,.018);}
 .plan-n{
   font-family:var(--sans);
-  font-size:10.5px;font-weight:500;letter-spacing:.16em;color:var(--line-3);
+  font-size:10.5px;font-weight:500;letter-spacing:.16em;color:var(--bone-3);
   transition:color var(--t-mid);align-self:start;padding-top:.55em;
 }
 .plan-bar:hover .plan-n,.plan-bar[aria-expanded="true"] .plan-n{color:var(--brass);}
@@ -1387,7 +1387,9 @@ footer{
   }
   .nav-inner{gap:var(--s4);}
   .nav-end{order:2;margin-left:0;gap:var(--s4);}
-  .nav-toggle{order:3;margin-left:var(--s2);}
+  /* sin esto el flex lo aprieta y sus barras, que van en
+     absoluto, quedan fuera de la pantalla */
+  .nav-toggle{order:3;margin-left:var(--s2);flex:0 0 auto;}
 
   .menu{
     order:4;flex:0 0 100%;display:none;
@@ -1495,6 +1497,40 @@ footer{
   .foot-links{gap:var(--s4) var(--s5);}
 }
 
+/* ---------- LA BARRA EN PANTALLAS ANGOSTAS ----------
+   En la barra conviven marca, idioma, boton y menu. Por debajo de 480 no
+   entran a su tamano normal, y en ingles el boton de la derecha es mas
+   largo que en castellano. En vez de esconder ninguna de las cuatro cosas
+   se aprieta el lockup.
+
+   Los tres bloques van de mas ancho a mas angosto: son consultas max-width
+   y se pisan entre si, asi que el angosto tiene que ir ultimo. Estaban al
+   reves y el bloque de 420 le devolvia a 320 el tamano que el de 360 le
+   acababa de sacar. */
+@media (max-width:480px){
+  .nav-inner{gap:8px;}
+  .brand{font-size:14px;gap:8px;}
+  .brand-mark{width:20px;height:20px;}
+  .nav-end{gap:8px;margin-left:auto;}
+  .lang{gap:4px;}
+  .lang-b{font-size:9.5px;letter-spacing:.05em;}
+  .nav-end .btn-sm{padding:8px 10px;font-size:9px;letter-spacing:.06em;}
+}
+
+@media (max-width:420px){
+  /* el margen se ajusta en el token, no caja por caja: así el texto,
+     las reglas y la barra fija siguen alineados sobre la misma columna */
+  :root{--pad:20px;}
+  /* la barra la gobierna el escalon de 480: repetirla aca la volvia a
+     inflar justo en el rango donde no entra */
+  .btn{padding:15px 20px;}
+  .btn-sm{padding:9px 13px;font-size:10px;}
+  /* los botones no cortan renglon, pero "Descargar alcance y condiciones"
+     no entra en una linea a 320: solo ese grupo puede partirse */
+  .sec-cta .btn{white-space:normal;padding-left:18px;padding-right:18px;}
+  .hero-in{padding-left:var(--pad);padding-right:var(--pad);}
+}
+
 /* ---------- PANTALLAS MUY ANGOSTAS (320px) ----------
    En la barra conviven marca, idioma, boton y menu. A 320 no entran a
    su tamano normal: en vez de esconder ninguna de las cuatro cosas, se
@@ -1512,16 +1548,4 @@ footer{
   .nav-end .btn-sm{padding:7px 8px;font-size:8.5px;letter-spacing:.05em;}
   .nav-toggle{width:26px;margin-left:0;}
   .nav-toggle span{left:2px;width:20px;}
-}
-
-@media (max-width:420px){
-  /* el margen se ajusta en el token, no caja por caja: así el texto,
-     las reglas y la barra fija siguen alineados sobre la misma columna */
-  :root{--pad:20px;}
-  .nav-inner{padding-left:18px;padding-right:18px;gap:10px;}
-  .nav-end{gap:12px;margin-left:auto;}
-  .btn{padding:15px 20px;}
-  .btn-sm{padding:9px 13px;font-size:10px;}
-  .brand{font-size:16px;gap:10px;}
-  .hero-in{padding-left:var(--pad);padding-right:var(--pad);}
 }
