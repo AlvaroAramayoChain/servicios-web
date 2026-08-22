@@ -324,14 +324,20 @@ window.I18N_EN = {
 
     var norm = function (s) { return s.replace(/\s+/g, ' ').trim(); };
 
-    /* qué idioma mostrar: lo que pide la URL, después lo elegido antes,
-       y si no, el idioma del navegador */
+    /* Qué idioma mostrar: lo que pide la URL, después lo elegido antes, y
+       si no, español.
+
+       No se mira navigator.language a propósito. El sitio se escribe en
+       castellano y el inglés es una traducción: que un visitante de Salta
+       con el navegador en inglés cayera en la versión traducida era un
+       efecto no querido, y encima hacía que la primera pintada dependiera
+       de una preferencia del sistema que nadie eligió para este sitio.
+       Sin elección explícita, español. */
     function pick() {
       var q = (location.search.match(/[?&]lang=(es|en)/) || [])[1];
       if (q) return q;
       try { var st = localStorage.getItem(STORE); if (st === 'es' || st === 'en') return st; } catch (e) {}
-      var nav = (navigator.languages && navigator.languages[0]) || navigator.language || 'es';
-      return /^es/i.test(nav) ? 'es' : 'en';
+      return 'es';
     }
 
     /* Diccionario inverso: permite volver al español sin guardar el
