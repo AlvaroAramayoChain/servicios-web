@@ -43,10 +43,16 @@
   }, 2500);
 </script>
 
-<!-- Analitica. Va con defer y es el unico script externo del sitio: no
-     bloquea la primera pintada ni cambia el orden de i18n.js y script.js,
-     que siguen al final del body. Umami no usa cookies ni localStorage,
-     asi que el sitio no necesita cartel de consentimiento. -->
+<!-- Meta Pixel. Va debajo del guardia de .js, que tiene que correr
+     antes del primer pintado, y con defer para no bloquear el parseo.
+     Registra PageView y los eventos del cotizador; el detalle esta en
+     assets/metapixel.js. Este si deja cookie propia (_fbp). -->
+<script defer src="../assets/metapixel.js"></script>
+
+<!-- Analitica. Va con defer: no bloquea la primera pintada ni cambia el
+     orden de i18n.js y script.js, que siguen al final del body. Umami no
+     usa cookies ni localStorage; el pixel de Meta, que va arriba, si deja
+     una cookie propia. -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="14271b89-4196-429c-a2cd-51047de8d7f0"></script>
 </head>
 <body>
