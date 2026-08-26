@@ -862,7 +862,16 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
 .work-dot{width:6px;height:6px;flex:none;background:var(--line-3);}
 .work-dot.is-done{background:var(--ok);}
 .work-dot.is-wip{background:var(--warn);}
-.work-dot.is-tpl{background:var(--bone-3);}
+.work-dot.is-concept{background:var(--bone-3);}
+/* Los otros dos renglones de estado son etiquetas de dos palabras y por eso
+   van en versalitas apretadas. Este es una nota: en versalitas ocupaba cinco
+   renglones a 360px y el punto quedaba centrado contra todo el bloque, no
+   sobre la primera linea. Misma familia, mismo color, caja corrida. */
+.work-state.is-nota{
+  align-items:flex-start;
+  text-transform:none;letter-spacing:.01em;font-size:11px;line-height:1.6;
+}
+.work-state.is-nota .work-dot{margin-top:6px;}
 .work-shot{margin-top:var(--s2);border:1px solid var(--line);background:var(--surface);}
 .work-shot img{display:block;width:100%;height:auto;}
 .works-foot{
@@ -1175,6 +1184,9 @@ footer{
 .foot-links a:hover{color:var(--bone);}
 .foot-links a:hover::after{transform:scaleX(1);transform-origin:left;}
 .foot-legal{font-size:11.5px;max-width:66ch;line-height:1.65;font-weight:300;opacity:.8;}
+/* Las dos lineas de letra chica cuentan como un solo hijo de .foot-end,
+   que a partir de 820px es una rejilla de dos columnas. */
+.foot-fine{display:grid;gap:var(--s3);}
 
 /* El pie cierra con dos datos de distinto peso: a la izquierda la letra chica
    comercial, a la derecha quien esta detras de la marca. Misma estructura que
