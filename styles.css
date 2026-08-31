@@ -883,6 +883,47 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
 }
 
 /* ===========================================================
+   RESEÑAS
+   Dos testimonios antes del cierre. Separados por aire, nunca
+   por filete: la unica division del sitio es horizontal y ya la
+   pone la cota de .band.
+   =========================================================== */
+.reviews{display:grid;gap:var(--s7);grid-template-columns:1fr;margin-top:var(--s7);}
+@media (min-width:840px){.reviews{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s8);}}
+.rev{display:flex;flex-direction:column;gap:var(--s4);}
+
+/* Ni Jost ni la serif traen la estrella: la dibuja una fuente de simbolos
+   del sistema. Se listan las habituales para que el glifo sea el mismo en
+   Windows, Mac y Linux, y se evitan las de emoji, que la pintarian a color. */
+.rev-stars{
+  margin:0;
+  font-family:'Segoe UI Symbol','Noto Sans Symbols 2','DejaVu Sans',var(--sans);
+  font-size:14px;line-height:1;letter-spacing:.18em;color:var(--brass-hi);
+}
+
+/* La cita va en serif, como todo lo que en este sitio importa. No lleva
+   comillas: agregarlas seria meter caracteres en el texto de otra persona.
+   El <br> del original se conserva. */
+.rev-quote{
+  margin:0;
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(18px,17px + .35vw,22px);
+  line-height:1.45;letter-spacing:-.006em;color:var(--bone);
+  text-wrap:pretty;
+}
+
+/* La raya de la atribucion la pone el CSS, asi el nodo de texto queda con
+   el nombre y nada mas. */
+.rev-who{
+  margin:0;
+  font-family:var(--sans);
+  font-size:12px;letter-spacing:.06em;color:var(--bone-3);
+}
+.rev-who::before{content:"— ";}
+
+#resenas .sec-cta{margin-top:var(--s8);}
+
+/* ===========================================================
    COTIZADOR
    A la izquierda, un formulario que se lee como una lista de
    partidas. A la derecha, el único panel con sombra del sitio:

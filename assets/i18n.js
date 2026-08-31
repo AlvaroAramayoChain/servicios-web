@@ -217,6 +217,13 @@ window.I18N_EN = {
 "Enlaces": "Links",
 "Idioma": "Language",
 
+/* --- resenas de Google: solo la interfaz. Las citas y los nombres no
+       llevan clave a proposito: quedan en el idioma en que se escribieron --- */
+"Reseñas": "Reviews",
+"Lo que dicen quienes ya trabajaron conmigo.": "What the people who have worked with me say.",
+"5 de 5 estrellas": "5 out of 5 stars",
+"Ver todas las reseñas en Google": "See all reviews on Google",
+
 /* --- titulos y descripciones, uno por pagina --- */
 "Desarrollo web y sistemas a medida en Salta | Desarrollo Cardón": "Web development and custom systems in Salta | Desarrollo Cardón",
 "Desarrollo de sitios web institucionales y sistemas a medida para comercios y empresas, con precios publicados. Salta, Argentina.": "Business websites and custom systems for shops and companies, with published prices. Salta, Argentina.",
