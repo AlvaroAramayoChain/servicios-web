@@ -217,6 +217,29 @@ window.I18N_EN = {
 "Enlaces": "Links",
 "Idioma": "Language",
 
+/* --- alcance y condiciones: plazos, pagos y trabajo adicional --- */
+"Trabajo adicional": "Additional work",
+"Se cotiza por escrito antes de ejecutarlo": "Quoted in writing before it is carried out",
+"Nada se desarrolla ni se factura sin tu aprobación previa. El valor de la hora figura en el anexo.": "Nothing is built or invoiced without your prior approval. The hourly rate is in the annex.",
+"Contenidos": "Content",
+"10 días corridos desde el pago inicial": "10 calendar days from the initial payment",
+"Si a los 30 días el material sigue incompleto, el proyecto se pausa y se reprograma.": "If the material is still incomplete after 30 days, the project is paused and rescheduled.",
+"Revisión": "Review",
+"7 días corridos para enviar observaciones": "7 calendar days to send comments",
+"Pasado ese plazo sin respuesta, el trabajo se considera aprobado.": "With no reply after that, the work is taken as approved.",
+"Pagos": "Payments",
+"50 % al iniciar y 50 % contra aprobación": "50% up front and 50% on approval",
+"El sitio se publica y se transfiere una vez cancelado el saldo total.": "The site goes live and is handed over once the balance is settled in full.",
+"Validez del presupuesto": "Quote validity",
+"15 días desde su fecha": "15 days from its date",
+"Los precios se expresan en pesos argentinos y valen ese plazo.": "Prices are in Argentine pesos and hold for that period.",
+"Soporte": "Support",
+"Primera respuesta dentro de las 48 horas hábiles": "First reply within 48 business hours",
+"De lunes a viernes. El plazo de resolución depende de la complejidad del caso.": "Monday to Friday. Resolution time depends on how complex the case is.",
+"Inactividad": "Inactivity",
+"Más de 60 días sin avance por causas tuyas": "More than 60 days with no progress on your side",
+"El proyecto se cierra y retomarlo requiere un presupuesto nuevo.": "The project is closed and picking it up again needs a new quote.",
+
 /* --- resenas de Google: solo la interfaz. Las citas y los nombres no
        llevan clave a proposito: quedan en el idioma en que se escribieron --- */
 "Reseñas": "Reviews",
