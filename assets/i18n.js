@@ -18,7 +18,6 @@ window.I18N_EN = {
 "Cotizador": "Quote builder",
 "Preguntas": "FAQ",
 "Cotizar": "Get a quote",
-"Le pongo precio a lo que otros te cotizan por teléfono.": "I publish the prices others quote you over the phone.",
 "Armar mi presupuesto": "Build my quote",
 "Consultar por WhatsApp": "Enquire on WhatsApp",
 "Lista de precios 2026": "Price list 2026",

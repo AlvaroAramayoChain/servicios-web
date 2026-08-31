@@ -1458,11 +1458,13 @@ footer{
      composicion de celular es otra: banda de foto arriba, texto abajo sobre
      placa. Y el recorte se elige a mano por seccion para que cada foto
      muestre su motivo y no un hueco. */
-  /* La foto del hero es 16:9 en una caja alta: solo entra una cuarta parte
-     del ancho. Centrada caia en la zona plana y la diagonal dorada quedaba
-     recortada, o sea que la imagen no aportaba nada. Corrida a la derecha,
-     la diagonal entra al pie del hero. */
-  .hero-bg img{object-position:82% center;}
+  /* La imagen del hero es muy apaisada dentro de una caja alta: por debajo
+     de 900px solo entra una cuarta parte del ancho. El cardon vive entre el
+     65% y el 83%, asi que con el encuadre a la derecha ocupaba la pantalla
+     entera y quedaba justo detras del titular. Corrido a la izquierda se ve
+     el campo oscuro: en pantalla angosta manda el texto, y el cardon es un
+     gesto de escritorio. */
+  .hero-bg img{object-position:22% center;}
   .hero::after{
     background:
       linear-gradient(180deg,var(--ink) 0%,rgba(11,11,10,.60) 9%,
