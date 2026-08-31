@@ -98,6 +98,8 @@ window.I18N_EN = {
 "Consultar App Web Full": "Enquire about the Full Web App",
 "Proyectos realizados.": "Completed projects.",
 "Tres proyectos reales. El portfolio incluye una recreación simplificada de cada uno: no se publican nombres de clientes, datos de contacto ni información comercial.": "Three real projects. The portfolio includes a simplified recreation of each one: client names, contact details and commercial information are not published.",
+"Catálogo de servicios": "Service catalog",
+"Sitio institucional para una empresa de seguridad privada de la Puna salteña. Ordena sus servicios —vigilancia, custodia armada y protección de cargas y bienes— y la pone delante de las operaciones mineras con las que trabaja.": "A business website for a private security firm in the Salta Puna. It sets out its services — surveillance, armed escort and cargo and asset protection — and puts the company in front of the mining operations it works with.",
 "Sitio institucional": "Business website",
 "Sitio institucional para una empresa de servicios informáticos, con catálogo de servicios, portfolio propio y módulo de tickets para los reclamos de sus clientes.": "Business website for an IT services company, with a service catalogue, its own portfolio and a ticket module for its clients' support requests.",
 "Entregado": "Delivered",

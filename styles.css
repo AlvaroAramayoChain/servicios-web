@@ -829,7 +829,10 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
    TRABAJOS — fichas de proyecto en columnas del índice
    =========================================================== */
 .works{display:grid;gap:0;grid-template-columns:1fr;border-top:1px solid var(--line-2);}
-@media (min-width:840px){.works{grid-template-columns:repeat(3,minmax(0,1fr));}}
+/* Con cuatro proyectos, tres columnas dejan una ficha sola y el filete
+   cortado a un tercio del ancho. De a dos cierran las dos filas y la
+   etiqueta mas larga entra sin partirse. */
+@media (min-width:840px){.works{grid-template-columns:repeat(2,minmax(0,1fr));}}
 .work{
   padding:var(--s5) 0 var(--s6);
   border-bottom:1px solid var(--line);
