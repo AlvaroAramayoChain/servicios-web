@@ -888,9 +888,21 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
    por filete: la unica division del sitio es horizontal y ya la
    pone la cota de .band.
    =========================================================== */
-.reviews{display:grid;gap:var(--s7);grid-template-columns:1fr;margin-top:var(--s7);}
-@media (min-width:840px){.reviews{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s8);}}
-.rev{display:flex;flex-direction:column;gap:var(--s4);}
+.reviews{display:grid;gap:var(--s4);grid-template-columns:1fr;margin-top:var(--s7);}
+@media (min-width:840px){.reviews{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s5);}}
+
+/* Mismo panel que .ficha y .quote-card: fondo levantado, caja sutil y el
+   filete de laton arriba, que repite la cota de la seccion. Las cajas se
+   separan por su propio aire; no hay filete entre ellas. */
+.rev{
+  display:flex;flex-direction:column;gap:var(--s4);
+  background:var(--surface);
+  border:1px solid var(--line);border-top:2px solid var(--brass);
+  border-radius:0 0 var(--r) var(--r);
+  padding:var(--s5);
+}
+/* la firma al pie: con reseñas de distinto largo, las dos quedan alineadas */
+.rev .rev-who{margin-top:auto;padding-top:var(--s2);}
 
 /* Ni Jost ni la serif traen la estrella: la dibuja una fuente de simbolos
    del sistema. Se listan las habituales para que el glifo sea el mismo en
