@@ -846,10 +846,9 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
   display:flex;flex-direction:column;gap:var(--s3);
   position:relative;
 }
-@media (min-width:840px){
-  .work{border-bottom:0;padding:var(--s5) var(--s7) var(--s5) 0;}
-  .work:last-child{padding-right:0;}
-}
+/* En escritorio el panel es ancho y 24px dejaban el texto pegado al borde.
+   En movil se mantiene, donde cada pixel de ancho de texto cuenta. */
+@media (min-width:840px){.work{padding:var(--s6);}}
 .work-kind{color:var(--brass-hi);}
 .work-name{
   font-family:var(--serif);
@@ -885,7 +884,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
 /* La captura va arriba de todo en la ficha y sangrada por el relleno del
    panel, asi su contorno no toca el de la caja. */
 .work-shot{
-  margin:0 0 var(--s2);border:1px solid var(--line);
+  margin:0 0 var(--s3);border:1px solid var(--line);
   background:var(--ink);overflow:hidden;border-radius:2px;
 }
 .work-shot img{display:block;width:100%;height:auto;}
