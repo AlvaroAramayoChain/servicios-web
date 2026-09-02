@@ -216,6 +216,9 @@ window.I18N_EN = {
 "Enlaces": "Links",
 "Idioma": "Language",
 
+"Captura del sitio de Salta Sistemas": "Screenshot of the Salta Sistemas website",
+"Captura del sitio de Condor Seguridad": "Screenshot of the Condor Seguridad website",
+
 /* --- alcance y condiciones: plazos, pagos y trabajo adicional --- */
 "Trabajo adicional": "Additional work",
 "Se cotiza por escrito antes de ejecutarlo": "Quoted in writing before it is carried out",
@@ -388,9 +391,15 @@ window.I18N_EN = {
       return out;
     }
 
-    /* ---- atributos ---- */
-    var arias = [].map.call(document.querySelectorAll('[aria-label]'), function (el) {
-      return { el: el, es: el.getAttribute('aria-label') };
+    /* ---- atributos ----
+       aria-label y alt se traducen igual: se guarda el elemento, el nombre
+       del atributo y su texto en castellano. */
+    var arias = [];
+    ['aria-label', 'alt'].forEach(function (attr) {
+      [].forEach.call(document.querySelectorAll('[' + attr + ']'), function (el) {
+        var v = el.getAttribute(attr);
+        if (v) arias.push({ el: el, attr: attr, es: v });
+      });
     });
     /* Enlaces que llevan un mensaje escrito dentro del propio href. Cada
        destino usa su parametro: WhatsApp arma el texto con ?text= y un correo
@@ -448,9 +457,9 @@ window.I18N_EN = {
       }
 
       arias.forEach(function (o) {
-        var cual = o.el.getAttribute('aria-label');
+        var cual = o.el.getAttribute(o.attr);
         var v = en ? dict[norm(cual)] : back[norm(cual)];
-        if (v != null) o.el.setAttribute('aria-label', v);
+        if (v != null) o.el.setAttribute(o.attr, v);
       });
       waLinks.forEach(function (o) {
         o.el.href = en ? o.base + '?' + o.param + '=' + encodeURIComponent(o.en) : o.es;

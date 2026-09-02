@@ -828,14 +828,21 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
 /* ===========================================================
    TRABAJOS — fichas de proyecto en columnas del índice
    =========================================================== */
-.works{display:grid;gap:0;grid-template-columns:1fr;border-top:1px solid var(--line-2);}
+/* Las fichas pasaron de renglones de un indice a paneles: el filete de
+   abajo, que antes las separaba, lo reemplaza el contorno de cada caja mas
+   el aire entre ellas. El relleno de arriba deja sitio a la linea que
+   dibuja data-stagger. */
+.works{display:grid;gap:var(--s4);grid-template-columns:1fr;
+  border-top:1px solid var(--line-2);padding-top:var(--s5);}
 /* Con cuatro proyectos, tres columnas dejan una ficha sola y el filete
    cortado a un tercio del ancho. De a dos cierran las dos filas y la
    etiqueta mas larga entra sin partirse. */
-@media (min-width:840px){.works{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media (min-width:840px){.works{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s5);}}
 .work{
-  padding:var(--s5) 0 var(--s6);
-  border-bottom:1px solid var(--line);
+  padding:var(--s5);
+  background:var(--surface);
+  border:1px solid var(--line);border-top:2px solid var(--brass);
+  border-radius:0 0 var(--r) var(--r);
   display:flex;flex-direction:column;gap:var(--s3);
   position:relative;
 }
@@ -875,7 +882,12 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
   text-transform:none;letter-spacing:.01em;font-size:11px;line-height:1.6;
 }
 .work-state.is-nota .work-dot{margin-top:6px;}
-.work-shot{margin-top:var(--s2);border:1px solid var(--line);background:var(--surface);}
+/* La captura va arriba de todo en la ficha y sangrada por el relleno del
+   panel, asi su contorno no toca el de la caja. */
+.work-shot{
+  margin:0 0 var(--s2);border:1px solid var(--line);
+  background:var(--ink);overflow:hidden;border-radius:2px;
+}
 .work-shot img{display:block;width:100%;height:auto;}
 .works-foot{
   display:flex;flex-wrap:wrap;gap:var(--s3);
