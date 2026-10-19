@@ -54,6 +54,45 @@
      usa cookies ni localStorage; el pixel de Meta, que va arriba, si deja
      una cookie propia. -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="14271b89-4196-429c-a2cd-51047de8d7f0"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18130847876"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18130847876');
+</script>
+
+<!-- Event snippet for Contacto conversion page -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18130847876/-tq5CPLGzqEdEISRu8VD',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+
+<!-- Conversion "Contacto" de Google Ads en los enlaces de WhatsApp. Todos
+     abren en pestana nueva, asi que se registra con un listener delegado
+     que no frena la navegacion; cubre tambien los que arma script.js. -->
+<script>
+  document.addEventListener('click', function (ev) {
+    var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+    if (!a) return;
+    var href = (a.getAttribute('href') || '').toLowerCase();
+    if (/wa\.me|api\.whatsapp\.com|web\.whatsapp\.com/.test(href)) {
+      gtag('event', 'conversion', { 'send_to': 'AW-18130847876/-tq5CPLGzqEdEISRu8VD' });
+    }
+  }, true);
+</script>
 </head>
 <body>
 
