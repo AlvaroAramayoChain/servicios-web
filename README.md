@@ -464,8 +464,9 @@ PNG original de 1,2 MB.
 ### El menú
 
 Seis destinos en una fila, sin desplegables: Inicio, Precios, Cotizador,
-Trabajos, Preguntas y Portfolio. Cada elemento es una página real y se llega en
-un clic. La página actual lleva `is-active` y `aria-current="page"`, escritos a
+Trabajos, Preguntas y Acerca de. Cada elemento es una página real y se llega en
+un clic. El Portfolio salió de la barra al sumar Acerca de (un séptimo destino
+la desbordaba aun a 1440px): sigue en el pie y dentro de /acerca/. La página actual lleva `is-active` y `aria-current="page"`, escritos a
 mano en cada HTML, y se marca con el filete de latón (con el color del acento en
 celular, que en una lista apilada se lee mejor).
 
