@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0B0B0A">
+
+<title>Política de privacidad | Desarrollo Cardón</title>
+<meta name="description" content="Qué datos registra desarrollocardon.com, para qué se usan Meta Pixel, la etiqueta de Google Ads y Umami, y cómo limitarlos.">
+<link rel="canonical" href="https://desarrollocardon.com/privacidad/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Desarrollo Cardón — Desarrollo web a medida">
+<meta property="og:title" content="Política de privacidad">
+<meta property="og:description" content="Qué datos registra el sitio y cómo limitarlos.">
+<meta property="og:url" content="https://desarrollocardon.com/privacidad/">
+<meta property="og:image" content="https://desarrollocardon.com/assets/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Política de privacidad">
+<meta name="twitter:description" content="Qué datos registra el sitio y cómo limitarlos.">
+<meta name="twitter:image" content="https://desarrollocardon.com/assets/og-cover.jpg">
+
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon.ico" sizes="32x32">
+<link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="../assets/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+<link rel="preload" href="../assets/fonts/jost-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles.css">
+
+<script>
+  /* Marca que hay JS ANTES del primer pintado: el CSS de animaciones
+     sólo se aplica bajo .js, así que si el JS falla o está bloqueado
+     el contenido se ve igual en vez de quedar invisible. */
+  document.documentElement.className = 'js';
+  setTimeout(function () {
+    var h = document.documentElement;
+    if (!h.classList.contains('reveal-ready')) h.classList.add('motion-off');
+  }, 2500);
+</script>
+
+<!-- Meta Pixel. Va debajo del guardia de .js, que tiene que correr
+     antes del primer pintado, y con defer para no bloquear el parseo.
+     Registra PageView y los eventos del cotizador; el detalle esta en
+     assets/metapixel.js. Este si deja cookie propia (_fbp). -->
+<script defer src="../assets/metapixel.js"></script>
+
+<!-- Analitica. Va con defer: no bloquea la primera pintada ni cambia el
+     orden de i18n.js y script.js, que siguen al final del body. Umami no
+     usa cookies ni localStorage; el pixel de Meta, que va arriba, si deja
+     una cookie propia. -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="14271b89-4196-429c-a2cd-51047de8d7f0"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18130847876"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18130847876');
+</script>
+
+<!-- Event snippet for Contacto conversion page -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18130847876/-tq5CPLGzqEdEISRu8VD',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+
+<!-- Conversion "Contacto" de Google Ads en los enlaces de WhatsApp. Todos
+     abren en pestana nueva, asi que se registra con un listener delegado
+     que no frena la navegacion; cubre tambien los que arma script.js. -->
+<script>
+  document.addEventListener('click', function (ev) {
+    var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+    if (!a) return;
+    var href = (a.getAttribute('href') || '').toLowerCase();
+    if (/wa\.me|api\.whatsapp\.com|web\.whatsapp\.com/.test(href)) {
+      gtag('event', 'conversion', { 'send_to': 'AW-18130847876/-tq5CPLGzqEdEISRu8VD' });
+    }
+  }, true);
+</script>
+</head>
+<body>
+
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<div class="rule-top" aria-hidden="true"><span id="progressBar"></span></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../">
+      <img class="brand-mark" src="../assets/logo.svg" alt=""
+           width="28" height="28" decoding="async">
+      Desarrollo Cardón <span class="brand-thin">Desarrollo web a medida</span>
+    </a>
+
+    <button type="button" class="nav-toggle" id="navToggle"
+            aria-expanded="false" aria-controls="menuPrincipal" aria-label="Menú">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+
+    <nav class="menu" id="menuPrincipal" aria-label="Navegación principal">
+      <a class="menu-b menu-link" href="../">Inicio</a>
+      <a class="menu-b menu-link" href="../precios/">Precios</a>
+      <a class="menu-b menu-link" href="../cotizador/">Cotizador</a>
+      <a class="menu-b menu-link" href="../trabajos/">Trabajos</a>
+      <a class="menu-b menu-link" href="../preguntas/">Preguntas</a>
+      <a class="menu-b menu-link" href="../acerca/">Acerca de</a>
+      <a class="menu-b menu-link" href="https://alvaroaramayochain.github.io/" target="_blank" rel="noopener">Portfolio</a>
+    </nav>
+
+    <div class="nav-end">
+      <div class="lang" role="group" aria-label="Idioma">
+        <button type="button" class="lang-b" data-lang="es" lang="es">ES</button>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <button type="button" class="lang-b" data-lang="en" lang="en">EN</button>
+      </div>
+      <a class="btn btn-solid btn-sm" href="../cotizador/">Cotizar</a>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+<section class="band band-first" id="privacidad" aria-labelledby="h-priv">
+  <div class="wrap">
+    <header class="sec">
+      <p class="sec-idx" data-reveal="rise">Privacidad</p>
+      <h1 id="h-priv" class="display" data-reveal="mask">Política de privacidad.</h1>
+      <p class="sec-note" data-reveal="rise" data-delay="1">
+        Qué datos se registran cuando visitás desarrollocardon.com, para qué se usan y cómo
+        podés limitarlos. Responsable: Desarrollo Cardón. Consultas sobre esta política:
+        <a href="mailto:contacto@desarrollocardon.com?subject=Privacidad">contacto@desarrollocardon.com</a>.
+      </p>
+      <p class="updated">Actualizado: <time datetime="2026-10-22">22 de octubre de 2026</time></p>
+    </header>
+
+    <div class="legal">
+      <h2>Datos que me enviás vos</h2>
+      <p>El sitio no tiene cuentas de usuario ni formularios que envíen datos a un servidor propio. Si me escribís por WhatsApp o por correo, uso lo que compartas (nombre, número, correo y lo que cuentes de tu proyecto) solo para responder la consulta y preparar el presupuesto.</p>
+
+      <h2>El cotizador</h2>
+      <p>El cotizador funciona en tu navegador: lo que elegís no se guarda en ningún servidor propio. El detalle sale del sitio cuando tocás «Enviar este presupuesto», que abre WhatsApp con el mensaje ya escrito. El píxel de Meta, descripto abajo, registra que se envió un presupuesto y su total estimado, sin el detalle de lo elegido.</p>
+
+      <h2>Medición y publicidad</h2>
+      <ul>
+        <li><b>Meta Pixel</b> (Meta Platforms). Registra las visitas y algunas acciones: ver la lista de precios o el cotizador, empezar a usar el cotizador, tocar un enlace de WhatsApp o de correo, descargar un PDF y enviar un presupuesto con su total estimado. Sirve para medir el rendimiento de los anuncios y deja una cookie propia (<code>_fbp</code>). Podés desactivarlo desde la configuración de anuncios de tu cuenta de Meta.</li>
+        <li><b>Etiqueta de Google Ads</b> (Google). Registra como conversión los clics en los enlaces de WhatsApp, para medir los anuncios de Google. Google puede usar cookies para esa medición. Podés limitar la publicidad personalizada desde <a href="https://myadcenter.google.com/" target="_blank" rel="noopener">Mi Centro de anuncios</a>.</li>
+        <li><b>Umami</b>. Cuenta visitas y clics de forma agregada, sin cookies ni almacenamiento en tu navegador.</li>
+      </ul>
+
+      <h2>Lo que guarda tu navegador</h2>
+      <p>El sitio no deja cookies propias. Guarda dos datos en el almacenamiento local de tu navegador: el idioma que elegiste (español o inglés) y la cotización del dólar oficial durante seis horas, para no pedirla en cada visita. Podés borrarlos desde la configuración del navegador.</p>
+
+      <h2>Servicios externos</h2>
+      <ul>
+        <li><b>dolarapi.com</b>. Tu navegador le pide la cotización del dólar oficial para mostrar las equivalencias de precios.</li>
+        <li><b>GitHub Pages</b> (GitHub). Aloja el sitio. Según su documentación, puede registrar la dirección IP de quien visita por razones de seguridad.</li>
+        <li><b>WhatsApp</b> (Meta). Los botones de contacto abren WhatsApp; desde ahí rige la política de privacidad de WhatsApp.</li>
+      </ul>
+
+      <h2>Cómo limitar la medición</h2>
+      <p>Podés bloquear las cookies de terceros desde tu navegador, usar un bloqueador de rastreadores o desactivar la publicidad personalizada en las cuentas de Meta y de Google. El sitio sigue funcionando igual: los precios, el cotizador y los enlaces de contacto no dependen de esas herramientas.</p>
+
+      <h2>Tus derechos</h2>
+      <p>Según la Ley 25.326 de Protección de los Datos Personales, podés pedir acceso, rectificación, actualización o supresión de tus datos escribiendo a <a href="mailto:contacto@desarrollocardon.com?subject=Privacidad">contacto@desarrollocardon.com</a>. El titular de los datos personales tiene la facultad de ejercer el derecho de acceso a los mismos en forma gratuita a intervalos no inferiores a seis meses, salvo que se acredite un interés legítimo al efecto conforme lo establecido en el artículo 14, inciso 3 de la Ley N° 25.326. La Agencia de Acceso a la Información Pública, en su carácter de Órgano de Control de la Ley N° 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales.</p>
+
+      <h2>Cambios</h2>
+      <p>Si cambian las herramientas que usa el sitio, se actualiza esta página y su fecha.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<a class="wafab" id="waFab" href="https://wa.me/543874832897?text=Hola%21%20Quiero%20consultar%20por%20un%20sitio%20web"
+   target="_blank" rel="noopener" aria-label="Escribirme por WhatsApp" data-wa-en="Hi! I'd like to enquire about a website" data-umami-event="whatsapp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.6-1.2-4.3-3.9-4.5-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-1c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3s.1.6-.1 1.2z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<footer>
+  <div class="wrap foot-in">
+    <p class="foot-name">Desarrollo Cardón<span>Desarrollo web a medida en Salta, Argentina</span></p>
+    <p class="foot-contact">
+      <a href="https://wa.me/543874832897?text=Hola%21%20Quiero%20consultar%20por%20un%20sitio%20web" target="_blank" rel="noopener" data-wa-en="Hi! I'd like to enquire about a website" data-umami-event="whatsapp">WhatsApp +54 387 483-2897</a>
+      <a href="mailto:contacto@desarrollocardon.com?subject=Consulta%20por%20servicios%20web" data-mail-en="Enquiry about web services">contacto@desarrollocardon.com</a>
+    </p>
+    <nav class="foot-links" aria-label="Enlaces">
+      <a href="../">Inicio</a>
+      <a href="../precios/">Precios</a>
+      <a href="../cotizador/">Cotizador</a>
+      <a href="../trabajos/">Trabajos</a>
+      <a href="../preguntas/">Preguntas</a>
+      <a href="../acerca/">Acerca de</a>
+      <a href="https://alvaroaramayochain.github.io/" target="_blank" rel="noopener">Portfolio</a>
+      <a href="https://github.com/AlvaroAramayoChain" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:contacto@desarrollocardon.com?subject=Consulta%20por%20servicios%20web" data-mail-en="Enquiry about web services">Email</a>
+      <a href="../catalogo.pdf" target="_blank" rel="noopener" data-umami-event="catalogo-pdf">Catálogo PDF</a>
+      <a href="../condiciones.pdf" target="_blank" rel="noopener" data-umami-event="condiciones-pdf">Condiciones PDF</a>
+      <a href="../privacidad/">Privacidad</a>
+    </nav>
+    <div class="foot-end">
+      <div class="foot-fine">
+        <p class="foot-legal">Precios en pesos argentinos, sujetos a variación cambiaria y al alcance final de cada proyecto. Última actualización de la lista: agosto de 2026.</p>
+        <p class="foot-legal foot-priv">Este sitio usa Meta Pixel para medir el rendimiento de sus anuncios. Podés desactivarlo desde la configuración de anuncios de tu cuenta de Meta. <a href="../privacidad/">Política de privacidad</a></p>
+      </div>
+      <p class="foot-by">Alvaro Aramayo Chain<span>Desarrollador web</span></p>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/i18n.js"></script>
+<script src="../script.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://desarrollocardon.com/privacidad/#pagina",
+  "url": "https://desarrollocardon.com/privacidad/",
+  "name": "Política de privacidad",
+  "inLanguage": "es-AR",
+  "isPartOf": {
+    "@id": "https://desarrollocardon.com/#sitio"
+  },
+  "publisher": {
+    "@id": "https://desarrollocardon.com/#negocio"
+  },
+  "datePublished": "2026-10-22",
+  "dateModified": "2026-10-22"
+}
+</script>
+</body>
+</html>

@@ -1195,11 +1195,34 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
 @media (max-width:600px){
   .cond-rows .row-txt{text-align:left;}
 }
+.row-txt a,.sec-note a,.legal a{border-bottom:1px solid var(--line-2);transition:color var(--t-fast),border-color var(--t-fast);}
+.row-txt a:hover,.sec-note a:hover,.legal a:hover{color:var(--bone);border-color:var(--brass);}
+
+/* ===========================================================
+   TEXTO LEGAL (/privacidad/)
+   Una columna de lectura: subtitulos en serif como el resto de los
+   titulares, cuerpo en la geometrica liviana de las respuestas.
+   =========================================================== */
+.legal{max-width:74ch;}
+.legal h2{
+  font-family:var(--serif);font-size:clamp(19px,1.8vw,23px);line-height:1.3;
+  margin:var(--s7) 0 var(--s3);
+}
+.legal h2:first-child{margin-top:0;}
+.legal p,.legal li{font-size:15.5px;line-height:1.72;color:var(--bone-2);font-weight:300;}
+.legal b{font-weight:500;color:var(--bone);}
+.legal ul{display:grid;gap:var(--s3);}
+.legal li{position:relative;padding-left:22px;}
+.legal li::before{content:"";position:absolute;left:0;top:.86em;width:10px;height:1px;background:var(--brass);}
+.legal code{font-family:var(--mono,monospace);font-size:.9em;color:var(--bone);}
 
 /* ===========================================================
    PREGUNTAS
    Mismo mecanismo que el índice de precios, en tono menor.
    =========================================================== */
+/* la pregunta es el h3 y el boton va adentro: el texto aparece una sola vez.
+   El h3 no aporta tipografia propia, la pone .plan-name como antes */
+.faq-q{font:inherit;color:inherit;}
 .faq .plan-bar{grid-template-columns:1fr 26px;gap:var(--s4);padding:var(--s4) 0;}
 .faq .plan-name{
   font-family:var(--serif);
@@ -1223,9 +1246,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
 .close{
   background:var(--ink-3);
   padding:clamp(84px,10vw,148px) 0;
-/* la pregunta es el h3 y el boton va adentro: el texto aparece una sola vez.
-   El h3 no aporta tipografia propia, la pone .plan-name como antes */
-.faq-q{font:inherit;color:inherit;}
   border-top:1px solid var(--line);
 }
 /* .close-in no lleva reglas propias a proposito: hereda la columna de .wrap.
@@ -1266,6 +1286,16 @@ footer{
 .foot-links a:hover{color:var(--bone);}
 .foot-links a:hover::after{transform:scaleX(1);transform-origin:left;}
 .foot-legal{font-size:11.5px;max-width:66ch;line-height:1.65;font-weight:300;opacity:.8;}
+.foot-priv a{border-bottom:1px solid var(--line-2);transition:color var(--t-fast),border-color var(--t-fast);}
+.foot-priv a:hover{color:var(--bone);border-color:var(--brass);}
+/* telefono y correo escritos, no solo detras de un boton: quien lee el pie
+   (o un buscador) ve el dato sin tener que abrir nada */
+.foot-contact{
+  display:flex;flex-wrap:wrap;gap:var(--s2) var(--s6);margin-top:calc(var(--s5) * -1 + var(--s2));
+  font-family:var(--sans);font-size:13px;font-weight:300;color:var(--bone-2);
+}
+.foot-contact a{transition:color var(--t-fast);}
+.foot-contact a:hover{color:var(--bone);}
 /* Las dos lineas de letra chica cuentan como un solo hijo de .foot-end,
    que a partir de 820px es una rejilla de dos columnas. */
 .foot-fine{display:grid;gap:var(--s3);}

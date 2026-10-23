@@ -669,7 +669,7 @@ inglés, en texto plano: el navegador lo codifica solo.
 
 ### Analítica
 
-Umami, con `defer`, antes de `</head>` en las cinco páginas. Es el único script
+Umami, con `defer`, antes de `</head>` en las siete páginas indexables (la 404 no lo lleva). Es el único script
 externo del repositorio y no bloquea la primera pintada: suma **0,4 KB** a lo
 que descarga el navegador antes de dibujar, más 2,4 KB del script diferido.
 
@@ -852,7 +852,7 @@ Pages; para comprobar ese comportamiento hay que mirarlo publicado.
 
 ---
 - [ ] Si tocaste un `<head>`: el fragmento de Umami tiene que quedar idéntico en
-      las cinco páginas y `data-website-id` aparecer exactamente 5 veces.
+      las siete páginas y `data-website-id` aparecer exactamente 7 veces.
 - [ ] Si agregaste un enlace a `wa.me`: marcalo con `data-umami-event="whatsapp"`,
       salvo que sea un botón de envío del presupuesto, que va con
       `presupuesto-wa`. Nunca los dos en el mismo elemento.

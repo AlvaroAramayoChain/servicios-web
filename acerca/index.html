@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0B0B0A">
+
+<title>Acerca de Desarrollo Cardón | Alvaro Aramayo Chain</title>
+<meta name="description" content="Desarrollo Cardón es la marca de Alvaro Aramayo Chain, desarrollador web en Salta, Argentina: sitios web y sistemas a medida con precios publicados.">
+<link rel="canonical" href="https://desarrollocardon.com/acerca/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Desarrollo Cardón — Desarrollo web a medida">
+<meta property="og:title" content="Acerca de Desarrollo Cardón">
+<meta property="og:description" content="Quién está detrás de Desarrollo Cardón, dónde trabaja y cómo.">
+<meta property="og:url" content="https://desarrollocardon.com/acerca/">
+<meta property="og:image" content="https://desarrollocardon.com/assets/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Acerca de Desarrollo Cardón">
+<meta name="twitter:description" content="Quién está detrás de Desarrollo Cardón, dónde trabaja y cómo.">
+<meta name="twitter:image" content="https://desarrollocardon.com/assets/og-cover.jpg">
+
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon.ico" sizes="32x32">
+<link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="../assets/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+<link rel="preload" href="../assets/fonts/jost-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles.css">
+
+<script>
+  /* Marca que hay JS ANTES del primer pintado: el CSS de animaciones
+     sólo se aplica bajo .js, así que si el JS falla o está bloqueado
+     el contenido se ve igual en vez de quedar invisible. */
+  document.documentElement.className = 'js';
+  setTimeout(function () {
+    var h = document.documentElement;
+    if (!h.classList.contains('reveal-ready')) h.classList.add('motion-off');
+  }, 2500);
+</script>
+
+<!-- Meta Pixel. Va debajo del guardia de .js, que tiene que correr
+     antes del primer pintado, y con defer para no bloquear el parseo.
+     Registra PageView y los eventos del cotizador; el detalle esta en
+     assets/metapixel.js. Este si deja cookie propia (_fbp). -->
+<script defer src="../assets/metapixel.js"></script>
+
+<!-- Analitica. Va con defer: no bloquea la primera pintada ni cambia el
+     orden de i18n.js y script.js, que siguen al final del body. Umami no
+     usa cookies ni localStorage; el pixel de Meta, que va arriba, si deja
+     una cookie propia. -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="14271b89-4196-429c-a2cd-51047de8d7f0"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18130847876"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18130847876');
+</script>
+
+<!-- Event snippet for Contacto conversion page -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18130847876/-tq5CPLGzqEdEISRu8VD',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+
+<!-- Conversion "Contacto" de Google Ads en los enlaces de WhatsApp. Todos
+     abren en pestana nueva, asi que se registra con un listener delegado
+     que no frena la navegacion; cubre tambien los que arma script.js. -->
+<script>
+  document.addEventListener('click', function (ev) {
+    var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+    if (!a) return;
+    var href = (a.getAttribute('href') || '').toLowerCase();
+    if (/wa\.me|api\.whatsapp\.com|web\.whatsapp\.com/.test(href)) {
+      gtag('event', 'conversion', { 'send_to': 'AW-18130847876/-tq5CPLGzqEdEISRu8VD' });
+    }
+  }, true);
+</script>
+</head>
+<body>
+
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<div class="rule-top" aria-hidden="true"><span id="progressBar"></span></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="../">
+      <img class="brand-mark" src="../assets/logo.svg" alt=""
+           width="28" height="28" decoding="async">
+      Desarrollo Cardón <span class="brand-thin">Desarrollo web a medida</span>
+    </a>
+
+    <button type="button" class="nav-toggle" id="navToggle"
+            aria-expanded="false" aria-controls="menuPrincipal" aria-label="Menú">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+
+    <nav class="menu" id="menuPrincipal" aria-label="Navegación principal">
+      <a class="menu-b menu-link" href="../">Inicio</a>
+      <a class="menu-b menu-link" href="../precios/">Precios</a>
+      <a class="menu-b menu-link" href="../cotizador/">Cotizador</a>
+      <a class="menu-b menu-link" href="../trabajos/">Trabajos</a>
+      <a class="menu-b menu-link" href="../preguntas/">Preguntas</a>
+      <a class="menu-b menu-link is-active" href="../acerca/" aria-current="page">Acerca de</a>
+      <a class="menu-b menu-link" href="https://alvaroaramayochain.github.io/" target="_blank" rel="noopener">Portfolio</a>
+    </nav>
+
+    <div class="nav-end">
+      <div class="lang" role="group" aria-label="Idioma">
+        <button type="button" class="lang-b" data-lang="es" lang="es">ES</button>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <button type="button" class="lang-b" data-lang="en" lang="en">EN</button>
+      </div>
+      <a class="btn btn-solid btn-sm" href="../cotizador/">Cotizar</a>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+<section class="band band-first" id="acerca" aria-labelledby="h-acerca">
+  <div class="wrap">
+    <header class="sec">
+      <p class="sec-idx" data-reveal="rise">Acerca de</p>
+      <h1 id="h-acerca" class="display" data-reveal="mask">Quién está detrás de Desarrollo Cardón.</h1>
+      <p class="sec-note" data-reveal="rise" data-delay="1">
+        Desarrollo Cardón es la marca con la que trabajo yo, Alvaro Aramayo Chain, desarrollador
+        web en Salta, Argentina. Hago sitios web institucionales y sistemas a medida para comercios
+        y empresas, con precios publicados.
+      </p>
+    </header>
+
+    <dl class="rows cond-rows" data-stagger>
+        <div class="row">
+          <dt>Quién<span>Alvaro Aramayo Chain, desarrollador web</span></dt>
+          <dd class="row-txt">Diseño, desarrollo y publico cada proyecto, y soy quien responde las consultas.</dd>
+        </div>
+        <div class="row">
+          <dt>Dónde<span>Salta, Argentina</span></dt>
+          <dd class="row-txt">El desarrollo es remoto y trabajo con negocios de todo el país. En Salta, si preferís, nos vemos en persona para arrancar.</dd>
+        </div>
+        <div class="row">
+          <dt>Qué hago<span>Sitios web, apps web y mantenimiento</span></dt>
+          <dd class="row-txt">Sitios Landing, Institucional e Institucional Premium; apps web con panel, tickets y bot de Telegram; hosting y mantenimiento mensual.</dd>
+        </div>
+        <div class="row">
+          <dt>Cómo trabajo<span>Con precios publicados</span></dt>
+          <dd class="row-txt">Cada plan tiene alcance, precio y plazo escritos antes de hablar. El dominio y el hosting quedan a tu nombre y no hay contrato de permanencia.</dd>
+        </div>
+        <div class="row">
+          <dt>Con qué<span>Las herramientas de los proyectos publicados</span></dt>
+          <dd class="row-txt">Python, Django y Flask para los sistemas con panel; HTML y CSS para los sitios.</dd>
+        </div>
+        <div class="row">
+          <dt>Trayectoria<span>Experiencia y formación</span></dt>
+          <dd class="row-txt">[DATO A COMPLETAR + fuente: años de experiencia en desarrollo web, formación o certificaciones verificables]</dd>
+        </div>
+        <div class="row">
+          <dt>Desde<span>Inicio de la actividad</span></dt>
+          <dd class="row-txt">[DATO A COMPLETAR + fuente: año en que empezó Desarrollo Cardón]</dd>
+        </div>
+        <div class="row">
+          <dt>El nombre<span>Un cactus de Salta</span></dt>
+          <dd class="row-txt">El cardón es el cactus columnar de Salta, y es el isotipo de la marca.</dd>
+        </div>
+    </dl>
+  </div>
+</section><section class="band band-soft" id="perfiles" aria-labelledby="h-perfiles">
+  <div class="wrap">
+    <header class="sec">
+      <p class="sec-idx" data-reveal="rise">Trabajos y perfiles</p>
+      <h2 id="h-perfiles" class="display-2" data-reveal="mask">Dónde ver lo que hice.</h2>
+      <p class="sec-note" data-reveal="rise" data-delay="1">
+        Dos sitios institucionales entregados, Salta Sistemas y Condor Seguridad, y un catálogo de
+        productos en desarrollo. Las reseñas de clientes están en Google.
+      </p>
+    </header>
+
+    <dl class="rows cond-rows" data-stagger>
+        <div class="row">
+          <dt>Trabajos<span>Proyectos entregados y en curso</span></dt>
+          <dd class="row-txt"><a href="../trabajos/">Ver los proyectos en detalle</a></dd>
+        </div>
+        <div class="row">
+          <dt>Reseñas<span>Google</span></dt>
+          <dd class="row-txt"><a href="https://g.page/r/CV3smKA670ODEAI/review" target="_blank" rel="noopener" data-umami-event="resenas-google">Ver todas las reseñas en Google</a></dd>
+        </div>
+        <div class="row">
+          <dt>Portfolio<span>Sitio personal</span></dt>
+          <dd class="row-txt"><a href="https://alvaroaramayochain.github.io/" target="_blank" rel="noopener">alvaroaramayochain.github.io</a></dd>
+        </div>
+        <div class="row">
+          <dt>GitHub<span>Código</span></dt>
+          <dd class="row-txt"><a href="https://github.com/AlvaroAramayoChain" target="_blank" rel="noopener">github.com/AlvaroAramayoChain</a></dd>
+        </div>
+        <div class="row">
+          <dt>Fiverr<span>Perfil de freelancer</span></dt>
+          <dd class="row-txt"><a href="https://www.fiverr.com/s/2ppgq6L" target="_blank" rel="noopener">Ver el perfil en Fiverr</a></dd>
+        </div>
+        <div class="row">
+          <dt>Upwork<span>Perfil de freelancer</span></dt>
+          <dd class="row-txt"><a href="https://www.upwork.com/freelancers/~011c5f37c58d8a6f0a" target="_blank" rel="noopener">Ver el perfil en Upwork</a></dd>
+        </div>
+        <div class="row">
+          <dt>Instagram<span>Desarrollo Cardón</span></dt>
+          <dd class="row-txt"><a href="https://www.instagram.com/desarrollocardondev/" target="_blank" rel="noopener">@desarrollocardondev</a></dd>
+        </div>
+        <div class="row">
+          <dt>WhatsApp<span>Respondo el mismo día</span></dt>
+          <dd class="row-txt"><a href="https://wa.me/543874832897?text=Hola%21%20Quiero%20consultar%20por%20un%20sitio%20web" target="_blank" rel="noopener" data-wa-en="Hi! I'd like to enquire about a website" data-umami-event="whatsapp">+54 387 483-2897</a></dd>
+        </div>
+        <div class="row">
+          <dt>Correo<span>Consultas y presupuestos</span></dt>
+          <dd class="row-txt"><a href="mailto:contacto@desarrollocardon.com?subject=Consulta%20por%20servicios%20web" data-mail-en="Enquiry about web services">contacto@desarrollocardon.com</a></dd>
+        </div>
+    </dl>
+  </div>
+</section>
+</main>
+
+<a class="wafab" id="waFab" href="https://wa.me/543874832897?text=Hola%21%20Quiero%20consultar%20por%20un%20sitio%20web"
+   target="_blank" rel="noopener" aria-label="Escribirme por WhatsApp" data-wa-en="Hi! I'd like to enquire about a website" data-umami-event="whatsapp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.6-1.2-4.3-3.9-4.5-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.8-1c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3s.1.6-.1 1.2z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<footer>
+  <div class="wrap foot-in">
+    <p class="foot-name">Desarrollo Cardón<span>Desarrollo web a medida en Salta, Argentina</span></p>
+    <p class="foot-contact">
+      <a href="https://wa.me/543874832897?text=Hola%21%20Quiero%20consultar%20por%20un%20sitio%20web" target="_blank" rel="noopener" data-wa-en="Hi! I'd like to enquire about a website" data-umami-event="whatsapp">WhatsApp +54 387 483-2897</a>
+      <a href="mailto:contacto@desarrollocardon.com?subject=Consulta%20por%20servicios%20web" data-mail-en="Enquiry about web services">contacto@desarrollocardon.com</a>
+    </p>
+    <nav class="foot-links" aria-label="Enlaces">
+      <a href="../">Inicio</a>
+      <a href="../precios/">Precios</a>
+      <a href="../cotizador/">Cotizador</a>
+      <a href="../trabajos/">Trabajos</a>
+      <a href="../preguntas/">Preguntas</a>
+      <a href="../acerca/">Acerca de</a>
+      <a href="https://alvaroaramayochain.github.io/" target="_blank" rel="noopener">Portfolio</a>
+      <a href="https://github.com/AlvaroAramayoChain" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:contacto@desarrollocardon.com?subject=Consulta%20por%20servicios%20web" data-mail-en="Enquiry about web services">Email</a>
+      <a href="../catalogo.pdf" target="_blank" rel="noopener" data-umami-event="catalogo-pdf">Catálogo PDF</a>
+      <a href="../condiciones.pdf" target="_blank" rel="noopener" data-umami-event="condiciones-pdf">Condiciones PDF</a>
+      <a href="../privacidad/">Privacidad</a>
+    </nav>
+    <div class="foot-end">
+      <div class="foot-fine">
+        <p class="foot-legal">Precios en pesos argentinos, sujetos a variación cambiaria y al alcance final de cada proyecto. Última actualización de la lista: agosto de 2026.</p>
+        <p class="foot-legal foot-priv">Este sitio usa Meta Pixel para medir el rendimiento de sus anuncios. Podés desactivarlo desde la configuración de anuncios de tu cuenta de Meta. <a href="../privacidad/">Política de privacidad</a></p>
+      </div>
+      <p class="foot-by">Alvaro Aramayo Chain<span>Desarrollador web</span></p>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/i18n.js"></script>
+<script src="../script.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://desarrollocardon.com/acerca/#pagina",
+      "url": "https://desarrollocardon.com/acerca/",
+      "name": "Acerca de Desarrollo Cardón",
+      "inLanguage": "es-AR",
+      "isPartOf": {
+        "@id": "https://desarrollocardon.com/#sitio"
+      },
+      "about": {
+        "@id": "https://desarrollocardon.com/#negocio"
+      },
+      "mainEntity": {
+        "@id": "https://desarrollocardon.com/acerca/#alvaro"
+      },
+      "datePublished": "2026-10-22",
+      "dateModified": "2026-10-22"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://desarrollocardon.com/acerca/#alvaro",
+      "name": "Alvaro Aramayo Chain",
+      "jobTitle": "Desarrollador web",
+      "url": "https://desarrollocardon.com/acerca/",
+      "worksFor": {
+        "@id": "https://desarrollocardon.com/#negocio"
+      },
+      "knowsAbout": [
+        "Desarrollo web",
+        "Sitios web institucionales",
+        "Aplicaciones web",
+        "Python",
+        "Django",
+        "Flask"
+      ],
+      "sameAs": [
+        "https://alvaroaramayochain.github.io/",
+        "https://github.com/AlvaroAramayoChain",
+        "https://www.fiverr.com/s/2ppgq6L",
+        "https://www.upwork.com/freelancers/~011c5f37c58d8a6f0a"
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>
