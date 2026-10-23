@@ -1220,6 +1220,9 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
 .close{
   background:var(--ink-3);
   padding:clamp(84px,10vw,148px) 0;
+/* la pregunta es el h3 y el boton va adentro: el texto aparece una sola vez.
+   El h3 no aporta tipografia propia, la pone .plan-name como antes */
+.faq-q{font:inherit;color:inherit;}
   border-top:1px solid var(--line);
 }
 /* .close-in no lleva reglas propias a proposito: hereda la columna de .wrap.
