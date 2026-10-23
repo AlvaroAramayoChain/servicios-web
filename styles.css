@@ -1499,10 +1499,10 @@ footer{
 
 /* ---------- MENÚ EN PANTALLAS ANGOSTAS ----------
    El menú se guarda detrás del botón y baja como una hoja a lo ancho.
-   El umbral es 1119 y no 1023 como el del riel: con seis destinos, más
+   El umbral es 1199 y no 1023 como el del riel: con seis destinos, más
    la marca, el idioma y el botón, la barra recién respira a partir de
-   1120. Antes de eso se apretaba y a 1024 se desbordaba 47px. */
-@media (max-width:1119px){
+   1200. Con 1120 el botón Cotizar todavía se cortaba hasta unos 1180px. */
+@media (max-width:1199px){
   .nav-toggle{display:block;}
   .brand-thin{display:none;}
   .nav,.nav.is-stuck{
@@ -1538,7 +1538,7 @@ footer{
 @media (min-width:1024px) and (max-width:1320px){
   :root{--rail:140px;}
 }
-@media (min-width:1120px) and (max-width:1320px){
+@media (min-width:1200px) and (max-width:1320px){
   .menu{gap:var(--s5);}
   .menu-b{font-size:10.5px;letter-spacing:.12em;}
   .nav-end{gap:var(--s4);margin-left:var(--s5);}

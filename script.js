@@ -166,8 +166,8 @@
      ========================================================= */
   var menu    = $('#menuPrincipal');
   var navBtn  = $('#navToggle');
-  // mismo umbral que el CSS: arriba de 1120 el menú vive en la barra
-  var esAncho = function () { return window.matchMedia('(min-width:1120px)').matches; };
+  // mismo umbral que el CSS: arriba de 1200 el menú vive en la barra
+  var esAncho = function () { return window.matchMedia('(min-width:1200px)').matches; };
 
   function cerrarMenu(devolverFoco) {
     if (!navBtn || navBtn.getAttribute('aria-expanded') !== 'true') return;

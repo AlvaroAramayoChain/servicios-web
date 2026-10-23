@@ -470,10 +470,10 @@ la desbordaba aun a 1440px): sigue en el pie y dentro de /acerca/. La página ac
 mano en cada HTML, y se marca con el filete de latón (con el color del acento en
 celular, que en una lista apilada se lee mejor).
 
-**El umbral del menú es 1120px, no 1024 como el del riel.** Son dos ajustes
+**El umbral del menú es 1200px, no 1024 como el del riel.** Son dos ajustes
 distintos que antes compartían número por casualidad: con seis destinos más la
 marca, el idioma y el botón, la barra se desbordaba 47px justo a 1024. Por
-debajo de 1120 el menú se guarda detrás del botón. Si cambiás la cantidad de
+debajo de 1200 el menú se guarda detrás del botón. Si cambiás la cantidad de
 enlaces o sus etiquetas, revisá ese umbral: `esAncho()` en `script.js` tiene que
 seguir usando el mismo número que el CSS.
 
