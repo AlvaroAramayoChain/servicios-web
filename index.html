@@ -367,25 +367,60 @@ function gtag_report_conversion(url) {
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "@id": "https://desarrollocardon.com/#negocio",
-  "name": "Desarrollo Cardón",
-  "alternateName": "Desarrollo Cardón — Desarrollo web a medida",
-  "founder": { "@type": "Person", "name": "Alvaro Aramayo Chain", "jobTitle": "Desarrollador web" },
-  "description": "Desarrollo de sitios web y sistemas a medida para comercios y empresas, con precios publicados.",
-  "url": "https://desarrollocardon.com/",
-  "image": "https://desarrollocardon.com/assets/og-cover.jpg",
-  "email": "contacto@desarrollocardon.com",
-  "telephone": "+543874832897",
-  "priceRange": "$$",
-  "areaServed": [
-    { "@type": "City", "name": "Salta" },
-    { "@type": "Country", "name": "Argentina" }
-  ],
-  "address": { "@type": "PostalAddress", "addressLocality": "Salta", "addressRegion": "Salta", "addressCountry": "AR" },
-  "sameAs": [
-    "https://github.com/AlvaroAramayoChain",
-    "https://alvaroaramayochain.github.io/"
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://desarrollocardon.com/#sitio",
+      "url": "https://desarrollocardon.com/",
+      "name": "Desarrollo Cardón",
+      "alternateName": "Desarrollo Cardón — Desarrollo web a medida",
+      "inLanguage": "es-AR",
+      "publisher": { "@id": "https://desarrollocardon.com/#negocio" }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://desarrollocardon.com/#negocio",
+      "name": "Desarrollo Cardón",
+      "alternateName": "Desarrollo Cardón — Desarrollo web a medida",
+      "founder": { "@id": "https://desarrollocardon.com/acerca/#alvaro" },
+      "description": "Desarrollo de sitios web y sistemas a medida para comercios y empresas, con precios publicados.",
+      "url": "https://desarrollocardon.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://desarrollocardon.com/logo/cardon-isotipo-1024.png",
+        "width": 1024,
+        "height": 1024
+      },
+      "image": "https://desarrollocardon.com/assets/og-cover.jpg",
+      "email": "contacto@desarrollocardon.com",
+      "telephone": "+543874832897",
+      "priceRange": "$$",
+      "areaServed": [
+        { "@type": "City", "name": "Salta" },
+        { "@type": "Country", "name": "Argentina" }
+      ],
+      "address": { "@type": "PostalAddress", "addressLocality": "Salta", "addressRegion": "Salta", "addressCountry": "AR" },
+      "hasOfferCatalog": { "@id": "https://desarrollocardon.com/precios/#catalogo" },
+      "sameAs": [
+        "https://g.page/r/CV3smKA670ODEAI/review",
+        "https://www.instagram.com/desarrollocardondev/"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://desarrollocardon.com/acerca/#alvaro",
+      "name": "Alvaro Aramayo Chain",
+      "jobTitle": "Desarrollador web",
+      "url": "https://desarrollocardon.com/acerca/",
+      "worksFor": { "@id": "https://desarrollocardon.com/#negocio" },
+      "knowsAbout": ["Desarrollo web", "Sitios web institucionales", "Aplicaciones web", "Python", "Django", "Flask"],
+      "sameAs": [
+        "https://alvaroaramayochain.github.io/",
+        "https://github.com/AlvaroAramayoChain",
+        "https://www.fiverr.com/s/2ppgq6L",
+        "https://www.upwork.com/freelancers/~011c5f37c58d8a6f0a"
+      ]
+    }
   ]
 }
 </script>
