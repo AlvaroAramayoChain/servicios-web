@@ -253,7 +253,7 @@ window.I18N_EN = {
 "Desarrollo web y sistemas a medida en Salta | Desarrollo Cardón": "Web development and custom systems in Salta | Desarrollo Cardón",
 "Desarrollo de sitios web institucionales y sistemas a medida para comercios y empresas, con precios publicados. Salta, Argentina.": "Business websites and custom systems for shops and companies, with published prices. Salta, Argentina.",
 "Precios de páginas web y sistemas a medida 2026 | Desarrollo Cardón": "Website and custom system prices 2026 | Desarrollo Cardón",
-"Lista de precios publicada: sitios web desde $250.000, apps con panel desde $1.100.000 y mantenimiento mensual desde $35.000. Con equivalencia en dólares.": "Published price list: websites from AR$250,000, apps with a panel from AR$1,100,000 and monthly maintenance from AR$35,000. With US dollar equivalents.",
+"Lista de precios publicada: sitios web desde $250.000, apps con panel desde $1.100.000 y mantenimiento mensual desde $35.000.": "Published price list: websites from AR$250,000, apps with a panel from AR$1,100,000 and monthly maintenance from AR$35,000.",
 "Cotizador de sitios web y sistemas | Desarrollo Cardón": "Website and system quote builder | Desarrollo Cardón",
 "Armá tu presupuesto en línea: elegí una base, sumá los módulos que necesites y enviame el detalle por WhatsApp.": "Build your quote online: pick a base, add the modules you need, and send me the breakdown on WhatsApp.",
 "Preguntas frecuentes | Desarrollo Cardón": "Frequently asked questions | Desarrollo Cardón",
@@ -308,6 +308,9 @@ window.I18N_EN = {
 "Aceptación": "Acceptance",
 "El trabajo empieza con tu confirmación por escrito": "Work starts with your confirmation in writing",
 "Por WhatsApp o correo, indicando qué plan contratás. Antes de eso no se inicia nada.": "By WhatsApp or email, stating which plan you are hiring. Nothing starts before that.",
+/* --- acerca de, privacidad y fechas de actualizacion --- */
+"Actualizado:": "Updated:",
+"31 de agosto de 2026": "31 August 2026",
 "@doc.title": "Web development and custom systems, prices published | Desarrollo Cardón",
 "@doc.description": "Websites and custom systems with published prices: sites from AR$250,000, applications with a panel from AR$1,100,000, and monthly maintenance. Online quote builder. Salta, Argentina.",
 "@cot.pagos": "In 2 payments of {x}",
