@@ -897,6 +897,9 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
   background:var(--ink);overflow:hidden;border-radius:2px;
 }
 .work-shot img{display:block;width:100%;height:auto;}
+/* /trabajos/ separa lo entregado de lo que sigue en curso: el segundo
+   rotulo necesita aire respecto de la grilla de arriba */
+.works + .works-cap{margin-top:var(--s8);}
 .works-foot{
   display:flex;flex-wrap:wrap;gap:var(--s3);
   margin-top:var(--s8);padding-top:var(--s5);border-top:1px solid var(--line-2);

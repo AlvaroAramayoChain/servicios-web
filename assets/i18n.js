@@ -96,7 +96,7 @@ window.I18N_EN = {
 "Para cuando revisar el correo ya no alcanza para saber qué pasó.": "For when checking your inbox is no longer enough to know what happened.",
 "7 a 9 semanas": "7 to 9 weeks",
 "Consultar App Web Full": "Enquire about the Full Web App",
-"Proyectos realizados.": "Completed projects.",
+"Proyectos entregados y en curso.": "Completed and ongoing projects.",
 "Catálogo de servicios": "Service catalog",
 "Sitio institucional para una empresa de seguridad privada de la Puna salteña. Ordena sus servicios —vigilancia, custodia armada y protección de cargas y bienes— y la pone delante de las operaciones mineras con las que trabaja.": "A business website for a private security firm in the Salta Puna. It sets out its services — surveillance, armed escort and cargo and asset protection — and puts the company in front of the mining operations it works with.",
 "Sitio institucional": "Business website",
@@ -108,7 +108,7 @@ window.I18N_EN = {
 "En desarrollo": "In development",
 "Página de una sola pantalla": "Single-screen page",
 "Página de anticipo para un negocio cuyo sitio completo está en construcción: identidad propia, captura de contacto y diseño móvil primero.": "A teaser page for a business whose full site is under construction: its own identity, contact capture and a mobile-first layout.",
-"Sigue el mismo concepto para casi todos los proyectos de este estilo (landing page coming soon)": "The same concept carries across almost every project of this kind (landing page coming soon)",
+"Concepto": "Concept",
 "Ver el portfolio completo": "See the full portfolio",
 "Solicitar un proyecto similar": "Request a similar project",
 "Armá tu presupuesto.": "Build your quote.",
@@ -216,8 +216,8 @@ window.I18N_EN = {
 "Enlaces": "Links",
 "Idioma": "Language",
 
-"Captura del sitio de Salta Sistemas": "Screenshot of the Salta Sistemas website",
-"Captura del sitio de Condor Seguridad": "Screenshot of the Condor Seguridad website",
+"Salta Sistemas: captura del sitio institucional con módulo de tickets": "Salta Sistemas: screenshot of the business website with a ticket module",
+"Condor Seguridad: captura del sitio institucional": "Condor Seguridad: screenshot of the business website",
 
 /* --- alcance y condiciones: plazos, pagos y trabajo adicional --- */
 "Trabajo adicional": "Additional work",
@@ -258,8 +258,8 @@ window.I18N_EN = {
 "Armá tu presupuesto en línea: elegí una base, sumá los módulos que necesites y enviame el detalle por WhatsApp.": "Build your quote online: pick a base, add the modules you need, and send me the breakdown on WhatsApp.",
 "Preguntas frecuentes | Desarrollo Cardón": "Frequently asked questions | Desarrollo Cardón",
 "Plazos, correcciones incluidas, a nombre de quién quedan el dominio y el hosting, formas de pago y qué pasa si querés cambiar de proveedor.": "Timeframes, revisions included, whose name the domain and hosting are in, payment terms, and what happens if you want to switch providers.",
-"Proyectos realizados | Desarrollo Cardón": "Completed projects | Desarrollo Cardón",
-"Tres proyectos reales de desarrollo web: un sitio institucional con módulo de tickets, un catálogo de productos y una página de anticipo.": "Three real web development projects: a business site with a ticket module, a product catalogue, and a teaser page.",
+"Proyectos web entregados y en curso | Desarrollo Cardón": "Delivered and ongoing web projects | Desarrollo Cardón",
+"Dos sitios institucionales entregados, Salta Sistemas y Condor Seguridad, un catálogo de productos en desarrollo y una página de anticipo.": "Two business websites delivered, Salta Sistemas and Condor Seguridad, a product catalogue in development and a teaser page.",
 
 /* --- pagina 404 --- */
 "Esta página no existe | Desarrollo Cardón": "This page does not exist | Desarrollo Cardón",
@@ -312,6 +312,8 @@ window.I18N_EN = {
 "Actualizado:": "Updated:",
 "31 de agosto de 2026": "31 August 2026",
 "22 de octubre de 2026": "22 October 2026",
+"Entregados": "Delivered work",
+"En desarrollo y conceptos": "In development and concepts",
 "@doc.title": "Web development and custom systems, prices published | Desarrollo Cardón",
 "@doc.description": "Websites and custom systems with published prices: sites from AR$250,000, applications with a panel from AR$1,100,000, and monthly maintenance. Online quote builder. Salta, Argentina.",
 "@cot.pagos": "In 2 payments of {x}",
