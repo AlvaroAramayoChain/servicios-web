@@ -1220,8 +1220,8 @@ fieldset{border:0;margin:0;padding:0;min-width:0;}
    PREGUNTAS
    Mismo mecanismo que el índice de precios, en tono menor.
    =========================================================== */
-/* la pregunta es el h3 y el boton va adentro: el texto aparece una sola vez.
-   El h3 no aporta tipografia propia, la pone .plan-name como antes */
+/* la pregunta es el h2 y el boton va adentro: el texto aparece una sola vez.
+   El h2 no aporta tipografia propia, la pone .plan-name como antes */
 .faq-q{font:inherit;color:inherit;}
 .faq .plan-bar{grid-template-columns:1fr 26px;gap:var(--s4);padding:var(--s4) 0;}
 .faq .plan-name{
