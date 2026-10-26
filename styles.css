@@ -1708,6 +1708,8 @@ footer{
 .oferta-x:hover{color:var(--bone);}
 .oferta-x svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;}
 html.oferta-cerrada .oferta{display:none;}
+/* pasado OFERTA_FIN (script.js) se apaga todo lo de la campaña */
+html.oferta-fin [data-oferta]{display:none !important;}
 
 /* debajo de 1200 no entra en un renglón: título arriba, precio y botón abajo */
 @media (max-width:1199px){

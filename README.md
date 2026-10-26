@@ -381,6 +381,36 @@ oferta.
 - Al final de `#apps` está el bloque "Qué incluye la oferta".
 - El JSON-LD sigue con el precio de lista.
 
+### Cuándo termina
+
+Una sola constante, arriba de `script.js` (sección 0):
+
+```js
+var OFERTA_FIN = '2026-11-30T23:59:59-03:00';
+```
+
+Pasada esa fecha, el JavaScript agrega `oferta-fin` a `<html>`. Con eso se ocultan el
+cartel y todo lo que lleva `data-oferta` (precio de oferta, leyendas, el bloque "Qué
+incluye" y la mención de la portada), y se le quita `has-oferta` a los planes para que
+el precio de lista deje de estar tachado y vuelva a llevar la referencia en dólares.
+
+**Esto es un apagado de emergencia, no la limpieza.** Sin JavaScript la oferta se
+sigue viendo, y Google sigue indexando el HTML. Después del 30/11 hay que borrar a mano:
+
+1. El bloque entre `<!-- oferta:inicio -->` y `<!-- oferta:fin -->` de las seis páginas.
+2. Todo lo marcado con `data-oferta` (`grep -rn data-oferta --include=*.html .`) y la
+   clase `has-oferta` y el `<span class="plan-pp">` de los cuatro planes, dejando
+   `<span class="plan-p"><span class="num">$520.000</span></span>`.
+3. Los mensajes de WhatsApp de esos cuatro `.plan-cta`, que vuelven a
+   `el plan X ($precio de lista)` en el `href` y en `data-wa-en`. **Hasta que se
+   borren siguen mencionando la oferta aunque haya vencido**: `i18n.js` guarda el
+   `href` antes de que corra `script.js`, y reescribirlo desde ahí complicaba más de
+   lo que resolvía.
+4. La sección "OFERTA PRIMEROS CLIENTES" de `styles.css`, las secciones 0 y 11 de
+   `script.js` y el reparto de `.usd` en `collectPrices()`.
+5. Las claves de la oferta en `assets/i18n.js`, que si no quedan huérfanas.
+6. Esta sección del README.
+
 ---
 
 ## Sistema visual

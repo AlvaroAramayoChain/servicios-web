@@ -26,6 +26,21 @@
     return Array.prototype.slice.call((ctx || document).querySelectorAll(sel));
   };
 
+  /* =========================================================
+     0. FIN DE LA OFERTA PRIMEROS CLIENTES
+     Es la única fecha de la campaña que mira el JavaScript. Pasada,
+     se ocultan el cartel y todo lo marcado con data-oferta, y los
+     planes vuelven a mostrar sólo el precio de lista. Va antes que
+     los precios porque cambia cuál de los dos lleva la referencia en
+     dólares. Después hay que borrar el bloque a mano: ver README.
+     ========================================================= */
+  var OFERTA_FIN = '2026-11-30T23:59:59-03:00';
+
+  if (Date.now() > Date.parse(OFERTA_FIN)) {
+    html.classList.add('oferta-fin');
+    $$('.has-oferta').forEach(function (el) { el.classList.remove('has-oferta'); });
+  }
+
   /* En inglés los miles se separan con coma y el peso se aclara como AR$:
      "$250.000" leído por un angloparlante son doscientos cincuenta dólares. */
   function money(n) {
@@ -112,7 +127,8 @@
       // con oferta hay dos precios y una sola referencia en dólares: la del
       // precio que se cobra. El tachado se formatea pero no la toca
       var caja = el.closest('.plan-p');
-      var vigente = !caja.classList.contains('has-oferta') || el.classList.contains('num-oferta');
+      var esOferta = el.classList.contains('num-oferta');
+      var vigente = caja.classList.contains('has-oferta') ? esOferta : !esOferta;
       priceEls.push({ el: el, vals: [n], usdIn: vigente ? caja : null });
     });
     $$('.ficha-list b').forEach(function (el) {
