@@ -1675,3 +1675,50 @@ footer{
   .nav-toggle{width:26px;margin-left:0;}
   .nav-toggle span{left:2px;width:20px;}
 }
+
+/* ===========================================================
+   OFERTA PRIMEROS CLIENTES
+   Banda delgada arriba del menú, repetida igual en las seis páginas
+   (ver README). Va en el flujo, no fija: al hacer scroll se va y la
+   nav sticky queda sola, así en celular no tapa contenido. Sin
+   animación y sin filetes verticales: un filete de 2px abajo y nada
+   más. El latón está sólo en el botón, que es la acción.
+   El estado sin JS es el final: se ve completa y el botón de cerrar
+   (que necesita JS) arranca oculto.
+   =========================================================== */
+.oferta{background:var(--ink-3);border-bottom:2px solid var(--line-2);}
+.oferta-in{
+  max-width:var(--maxw);margin:0 auto;padding:8px var(--pad);
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;
+  grid-template-areas:"t d cta x";align-items:center;gap:6px var(--s4);
+  font-family:var(--sans);font-size:12.5px;line-height:1.45;
+  font-weight:400;letter-spacing:.01em;color:var(--bone-2);
+}
+.oferta-t{grid-area:t;color:var(--bone);}
+.oferta-t strong{
+  font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+}
+.oferta-d{grid-area:d;}
+.oferta-cta{grid-area:cta;}
+.oferta-x{
+  grid-area:x;width:32px;height:32px;display:grid;place-items:center;
+  color:var(--bone-2);transition:color var(--t-fast);
+}
+.oferta-x[hidden]{display:none;}
+.oferta-x:hover{color:var(--bone);}
+.oferta-x svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;}
+html.oferta-cerrada .oferta{display:none;}
+
+/* debajo de 1200 no entra en un renglón: título arriba, precio y botón abajo */
+@media (max-width:1199px){
+  /* tres columnas: el título se extiende sobre la del botón, que es más
+     ancho que la cruz, y sólo le cede lugar a la cruz */
+  .oferta-in{grid-template-columns:minmax(0,1fr) auto auto;grid-template-areas:"t t x" "d cta cta";}
+}
+/* en celular se guarda el precio de lista y la puesta en producción: quedan
+   el tope, la fecha, el precio de oferta y el botón */
+@media (max-width:720px){
+  .oferta-extra{display:none;}
+  .oferta-in{font-size:12px;column-gap:var(--s3);}
+  .oferta-t strong{font-size:10.5px;letter-spacing:.12em;}
+}

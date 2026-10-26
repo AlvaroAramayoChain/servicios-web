@@ -301,6 +301,67 @@ propio parámetro.
 
 ---
 
+## Oferta primeros clientes
+
+Campaña de lanzamiento: **5 proyectos en total, hasta el 30/11/2026**. El precio de
+lista sigue siendo la referencia del sistema: el cotizador, `assets/catalogo.js` y
+los PDF no la conocen.
+
+### El cartel
+
+Es una banda arriba del menú, en las seis páginas con menú (no en /privacidad/ ni en
+la 404). Igual que el menú y el pie, **está copiado a mano en cada HTML** entre dos
+marcadores:
+
+```html
+<!-- oferta:inicio -->
+...
+<!-- oferta:fin -->
+```
+
+No lleva rutas relativas (el único enlace es `wa.me`), así que el bloque tiene que
+ser idéntico byte a byte en las seis. Para comprobarlo:
+
+```bash
+for f in index.html precios/index.html cotizador/index.html trabajos/index.html preguntas/index.html acerca/index.html; do
+  printf '%s  %s\n' "$(sed -n '/<!-- oferta:inicio -->/,/<!-- oferta:fin -->/p' "$f" | sha256sum | cut -c1-16)" "$f"; done
+```
+
+```powershell
+'index.html','precios/index.html','cotizador/index.html','trabajos/index.html','preguntas/index.html','acerca/index.html' | ForEach-Object {
+  $b = [regex]::Match((Get-Content $_ -Raw -Encoding UTF8), '(?s)<!-- oferta:inicio -->.*?<!-- oferta:fin -->').Value
+  $h = [BitConverter]::ToString([Security.Cryptography.SHA256]::Create().ComputeHash([Text.Encoding]::UTF8.GetBytes($b))).Replace('-','').Substring(0,16)
+  "$h  $_" }
+```
+
+Las seis líneas tienen que mostrar el mismo hash. Si una difiere, copiá el bloque
+de `index.html` encima del de esa página.
+
+- **Sin JavaScript se ve completo.** El botón de cerrar arranca con `hidden` y lo
+  muestra `script.js` (sección 11). Al cerrarlo se guarda `dc-oferta-cerrada` en
+  `localStorage`, siempre dentro de `try/catch`: si el navegador no deja guardar, se
+  cierra igual durante la visita.
+- **No es fijo.** Va en el flujo, arriba de la nav sticky: al hacer scroll se va y
+  no tapa contenido en el celular.
+- **Una línea desde 1200px, dos filas por debajo** (título arriba; precio y botón
+  abajo). En celular se oculta por CSS el precio de lista y la puesta en producción.
+
+### El tope de 5 proyectos
+
+Está escrito **una sola vez por página, dentro del cartel**, y en ningún otro lugar
+del sitio. No hay contador automático: si se venden los 5, se saca el cartel. Para
+cambiar el número (por ejemplo, a 3) hay que tocar las seis páginas y la clave del
+diccionario:
+
+```bash
+sed -i 's/>5 proyectos en total, hasta el 30\/11</>3 proyectos en total, hasta el 30\/11</' index.html precios/index.html cotizador/index.html trabajos/index.html preguntas/index.html acerca/index.html
+sed -i 's/^"5 proyectos en total, hasta el 30\/11": "5 projects/"3 proyectos en total, hasta el 30\/11": "3 projects/' assets/i18n.js
+```
+
+Después, corré la comprobación del hash.
+
+---
+
 ## Sistema visual
 
 La dirección se llama **ÍNDICE**. El negocio vende una sola cosa que nadie más

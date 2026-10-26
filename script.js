@@ -910,6 +910,31 @@
     }
   })();
 
+
+  /* =========================================================
+     11. OFERTA — cerrar el cartel
+     La elección se recuerda en localStorage. Si el navegador no lo
+     deja (modo privado, almacenamiento bloqueado), el cartel se cierra
+     igual durante la visita y vuelve a aparecer en la próxima.
+     ========================================================= */
+  (function () {
+    var cartel = $('#oferta');
+    var cerrar = $('#ofertaX');
+    if (!cartel || !cerrar) return;
+    var CLAVE = 'dc-oferta-cerrada';
+
+    try { if (localStorage.getItem(CLAVE)) html.classList.add('oferta-cerrada'); } catch (e) {}
+
+    cerrar.hidden = false;
+    cerrar.addEventListener('click', function () {
+      html.classList.add('oferta-cerrada');
+      try { localStorage.setItem(CLAVE, '1'); } catch (e) {}
+      // el botón desaparece con el cartel: el foco pasa a la marca de la nav
+      var siguiente = $('#nav a');
+      if (siguiente) siguiente.focus();
+    });
+  })();
+
   I18N.on(function () {
     // el texto ya lo cambió el bloque de i18n; acá va lo que arma el JS
     renderPrices();
