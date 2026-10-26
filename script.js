@@ -108,7 +108,12 @@
   function collectPrices() {
     $$('.plan-p .num').forEach(function (el) {
       var n = toNumber(el.textContent);
-      if (n) priceEls.push({ el: el, vals: [n], usdIn: el.parentNode });
+      if (!n) return;
+      // con oferta hay dos precios y una sola referencia en dólares: la del
+      // precio que se cobra. El tachado se formatea pero no la toca
+      var caja = el.closest('.plan-p');
+      var vigente = !caja.classList.contains('has-oferta') || el.classList.contains('num-oferta');
+      priceEls.push({ el: el, vals: [n], usdIn: vigente ? caja : null });
     });
     $$('.ficha-list b').forEach(function (el) {
       var n = toNumber(el.textContent);

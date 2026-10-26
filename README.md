@@ -360,6 +360,27 @@ sed -i 's/^"5 proyectos en total, hasta el 30\/11": "5 projects/"3 proyectos en 
 
 Después, corré la comprobación del hash.
 
+### Precios de oferta en /precios/
+
+Landing, Institucional, Institucional Premium y App Web Básica muestran el precio de
+lista tachado y el de oferta al lado. App Web + Tickets y App Web Full no tienen
+oferta.
+
+```html
+<span class="plan-p has-oferta"><span class="plan-pp">
+  <span class="sr-only">Precio de lista:</span> <span class="num num-lista">$520.000</span>
+  <span class="sr-only" data-oferta>Precio de oferta:</span> <span class="num num-oferta" data-oferta>$330.000</span>
+</span><small class="oferta-ley" data-oferta>Oferta primeros clientes hasta el 30/11</small></span>
+```
+
+- **El de lista va primero.** El control de precios de `script.js` (sección 10)
+  compara el primer `.num` de cada plan con `catalogo.js`, que sigue con la lista.
+- El formato (`AR$330,000` en inglés) lo pone `script.js` como en cualquier precio.
+  La referencia en dólares se calcula con el precio de oferta.
+- El mensaje de WhatsApp de esos cuatro planes menciona la oferta y su precio.
+- Al final de `#apps` está el bloque "Qué incluye la oferta".
+- El JSON-LD sigue con el precio de lista.
+
 ---
 
 ## Sistema visual

@@ -1722,3 +1722,29 @@ html.oferta-cerrada .oferta{display:none;}
   .oferta-in{font-size:12px;column-gap:var(--s3);}
   .oferta-t strong{font-size:10.5px;letter-spacing:.12em;}
 }
+
+/* ---------- precios de oferta en /precios/ ----------
+   El de lista va primero en el HTML (el control de precios lee el primer
+   .num de cada plan) y se ve tachado y más chico; el de oferta queda al
+   tamaño de siempre. Los selectores llevan .plan-bar para ganarle al
+   hover de .plan-p .num */
+.plan-pp{display:flex;align-items:baseline;gap:var(--s3);flex-wrap:wrap;justify-content:flex-end;}
+.plan-bar .plan-p.has-oferta .num-lista{
+  font-size:clamp(15px,1.5vw,19px);color:var(--bone-3);
+  text-decoration:line-through;text-decoration-thickness:1px;
+}
+.oferta-ley{
+  display:block;font-size:10.5px;font-weight:500;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--bone-2);
+}
+@media (max-width:600px){ .plan-pp{justify-content:flex-start;} }
+
+.oferta-incluye{margin-top:var(--s7);border-top:2px solid var(--line-2);padding-top:var(--s5);max-width:760px;}
+.oferta-inc-t{
+  font-family:var(--sans);font-size:10.5px;font-weight:500;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--bone);margin-bottom:var(--s3);
+}
+.oferta-lista li{
+  font-size:14.5px;line-height:1.6;color:var(--bone-2);
+  padding:var(--s3) 0;border-bottom:2px solid var(--line);
+}
