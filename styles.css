@@ -1746,6 +1746,11 @@ html.oferta-fin [data-oferta]{display:none !important;}
   font-family:var(--sans);font-size:10.5px;font-weight:500;letter-spacing:.18em;
   text-transform:uppercase;color:var(--bone);margin-bottom:var(--s3);
 }
+/* mención en la portada, debajo del botón de #sitios-info */
+.shot-oferta{
+  margin-top:var(--s4);padding-top:var(--s3);border-top:2px solid var(--line-2);
+  max-width:46ch;font-size:13.5px;line-height:1.55;font-weight:400;color:var(--bone);
+}
 .oferta-lista li{
   font-size:14.5px;line-height:1.6;color:var(--bone-2);
   padding:var(--s3) 0;border-bottom:2px solid var(--line);

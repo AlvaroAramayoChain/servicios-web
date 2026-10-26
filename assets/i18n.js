@@ -371,6 +371,7 @@ window.I18N_EN = {
 "Primer mes de hosting sin cargo y precio de mantenimiento congelado 12 meses.": "First month of hosting at no charge, and the maintenance price frozen for 12 months.",
 "A cambio: un testimonio escrito, una reseña en Google, autorización para mostrar el proyecto en /trabajos/ y un crédito discreto “Sitio por Desarrollo Cardón” en el pie.": "In return: a written testimonial, a Google review, permission to show the project in /trabajos/ and a discreet “Site by Desarrollo Cardón” credit in the footer.",
 "Pago 50% al inicio y 50% a la entrega.": "Payment: 50% at the start and 50% on delivery.",
+"Oferta primeros clientes hasta el 30/11: sitio institucional a $330.000, puesta en producción sin cargo.": "First-client offer until 30 Nov: a business site for AR$330,000, with go-live at no charge.",
 "@doc.title": "Web development and custom systems, prices published | Desarrollo Cardón",
 "@doc.description": "Websites and custom systems with published prices: sites from AR$250,000, applications with a panel from AR$1,100,000, and monthly maintenance. Online quote builder. Salta, Argentina.",
 "@cot.pagos": "In 2 payments of {x}",
