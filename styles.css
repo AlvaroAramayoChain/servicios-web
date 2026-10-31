@@ -1296,6 +1296,15 @@ footer{
 }
 .foot-contact a{transition:color var(--t-fast);}
 .foot-contact a:hover{color:var(--bone);}
+/* redes: solo el logo, con nombre accesible en aria-label; area tactil de 44px */
+.foot-social{display:flex;gap:var(--s2);margin-top:calc(var(--s5) * -1 + var(--s2));}
+.foot-social a{
+  display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;
+  border:1px solid var(--line-2);border-radius:var(--r);color:var(--bone-3);
+  transition:color var(--t-fast),border-color var(--t-fast),background var(--t-fast);
+}
+.foot-social svg{width:20px;height:20px;fill:currentColor;}
+.foot-social a:hover,.foot-social a:focus-visible{color:var(--brass);border-color:var(--brass-dp);background:var(--surface);}
 /* Las dos lineas de letra chica cuentan como un solo hijo de .foot-end,
    que a partir de 820px es una rejilla de dos columnas. */
 .foot-fine{display:grid;gap:var(--s3);}

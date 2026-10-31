@@ -214,6 +214,7 @@ window.I18N_EN = {
 "El cotizador necesita JavaScript. Los precios de cada plan están publicados en la lista de precios y podés consultarme directo por": "The quote builder requires JavaScript. Every plan's price is published in the price list and you can contact me directly on",
 "Qué incluye el trabajo": "What the work includes",
 "Enlaces": "Links",
+"Redes sociales": "Social media",
 "Idioma": "Language",
 
 "Salta Sistemas: captura del sitio institucional con módulo de tickets": "Salta Sistemas: screenshot of the business website with a ticket module",
